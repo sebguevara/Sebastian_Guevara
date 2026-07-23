@@ -1,0 +1,29 @@
+---
+import ProjectDetail from "@/components/projects/ProjectDetail.astro";
+import Layout from "@/layouts/Layout.astro";
+import { getLocale } from "@/consts/locale";
+import { getCv } from "@/lib/cv";
+
+export function getStaticPaths() {
+  return getCv("en").projects.map((project) => ({
+    params: { slug: project.slug },
+  }));
+}
+
+const { slug } = Astro.params;
+const locale = getLocale(Astro.currentLocale);
+const { basics, projects } = getCv(locale);
+const project = projects.find((item) => item.slug === slug);
+if (!project) {
+  throw new Error(`Unknown project slug: ${slug}`);
+}
+---
+
+<Layout
+  title={`${project.name} — ${basics.name}`}
+  description={project.description}
+>
+  <main>
+    <ProjectDetail slug={project.slug} />
+  </main>
+</Layout>

@@ -1,36 +1,74 @@
 ---
-import { Image } from "astro:assets";
-import type { ImageMetadata } from "astro";
-import { basics } from '@cv';
+import InterestCard from "@/components/about/InterestCard.astro";
+import LanguageList from "@/components/about/LanguageList.astro";
+import ProfilePhoto from "@/components/about/ProfilePhoto.astro";
+import SkillCard from "@/components/about/SkillCard.astro";
+import SectionHeader from "@/components/ui/SectionHeader.astro";
+import { getCopy } from "@/consts/copy";
+import { getLocale } from "@/consts/locale";
+import { getCv } from "@/lib/cv";
 
-interface Props {}
+const locale = getLocale(Astro.currentLocale);
+const copy = getCopy(locale);
+const { basics, skills, languages, interests } = getCv(locale);
 
-const {} = Astro.props;
-const images = import.meta.glob<{ default: ImageMetadata }>(
-  "/src/assets/profile/*.{webp,png,svg}"
-);
+const paragraphs =
+  basics.about.length > 0 ? basics.about : [basics.summary];
 ---
 
-<section>
-  <div class="w-full flex flex-col lg:flex-row items-center sm:gap-x-20 mb-8">
-    <div class="info-container flex flex-col gap-y-8">
-      <h1 class="font-bold text-4xl text-primary-100">ABOUT ME</h1>
-      <p class="text-lg">
-        Advanced Computer Science student and full-stack Angular developer with
-        over 3 years of experience. Currently focused on developing
-        cross-platform applications and Machine Learning.
-      </p>
+<div class="py-14 sm:py-20">
+  <SectionHeader
+    eyebrow={copy.sections.about.eyebrow}
+    title={copy.sections.about.title}
+  />
+
+  <div class="flex flex-col gap-10 lg:flex-row lg:items-start lg:gap-14">
+    <div class="flex flex-col gap-5 lg:flex-1">
+      {
+        paragraphs.map((paragraph) => (
+          <p class="text-base leading-relaxed text-muted sm:text-lg" data-animate="reveal">
+            {paragraph}
+          </p>
+        ))
+      }
     </div>
 
-    <div class="img-container relative lg:min-w-[24rem]">
-      <div class="image">
-        <Image
-          src={images[basics.image]()}
-          alt="Sebastian Guevara"
-        />
+    <ProfilePhoto />
+  </div>
+
+  <div class="mt-12 sm:mt-16">
+    <h3
+      class="mb-4 font-mono text-xs uppercase tracking-[0.2em] text-faint"
+      data-animate="reveal"
+    >
+      {copy.about.skills}
+    </h3>
+    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {skills.map((skill) => <SkillCard {...skill} />)}
+    </div>
+  </div>
+
+  <div class="mt-12 grid gap-10 sm:mt-16 lg:grid-cols-[1fr_2.2fr] lg:gap-8">
+    <div>
+      <h3
+        class="mb-4 font-mono text-xs uppercase tracking-[0.2em] text-faint"
+        data-animate="reveal"
+      >
+        {copy.about.languages}
+      </h3>
+      <LanguageList items={languages} />
+    </div>
+
+    <div>
+      <h3
+        class="mb-4 font-mono text-xs uppercase tracking-[0.2em] text-faint"
+        data-animate="reveal"
+      >
+        {copy.about.interests}
+      </h3>
+      <div class="grid grid-cols-1 gap-4 sm:grid-cols-3">
+        {interests.map((interest) => <InterestCard {...interest} />)}
       </div>
     </div>
   </div>
-</section>
-
-<style></style>
+</div>

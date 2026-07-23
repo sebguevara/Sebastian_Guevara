@@ -1,54 +1,64 @@
-export const nav = [
-    {
-      title: "Home",
-      label: "home",
-      url: "/#home",
-      icon: "Logo",
-    },
-    {
-      title: "Experience",
-      label: "experience",
-      url: "/#experience",
-      icon: "Briefcase",
-    },
-    {
-      title: "Projects",
-      label: "projects",
-      url: "/#projects",
-      icon: "FileCode",
-    },
-    {
-      title: "Education",
-      label: "education",
-      url: "/#education",
-      icon: "School",
-    },
-    {
-      title: "About",
-      label: "about",
-      url: "/#about",
-      icon: "About",
-    },
-  ];
+import { getCopy } from "@/consts/copy";
+import { localizePath, type Locale } from "@/consts/locale";
+import { getCv } from "@/lib/cv";
 
+export type NavItem = {
+  title: string;
+  label: string;
+  url: string;
+  icon: string;
+};
 
-  export const social = [
-    {
-      title: "Github",
-      label: "github",
-      url: "https://github.com/Seba74",
-      icon: "Github",
-    },
-    {
-      title: "LinkedIn",
-      label: "linkedin",
-      url: "https://www.linkedin.com/in/sebastian-guevara-1535b7183/",
-      icon: "Linkedin",
-    },
+export type SocialItem = {
+  title: string;
+  label: string;
+  url: string;
+  icon: string;
+};
+
+const navBase = [
+  { key: "home", label: "home", hash: "#home", icon: "Logo" },
+  { key: "experience", label: "experience", hash: "#experience", icon: "Briefcase" },
+  { key: "projects", label: "projects", hash: "#projects", icon: "FileCode" },
+  { key: "education", label: "education", hash: "#education", icon: "School" },
+  { key: "about", label: "about", hash: "#about", icon: "About" },
+] as const;
+
+/** Locale-aware nav: titles from copy, urls prefixed for the active locale. */
+export function getNav(lang: Locale): NavItem[] {
+  const copy = getCopy(lang);
+  const base = localizePath("/", lang);
+  return navBase.map((item) => ({
+    title: copy.nav[item.key],
+    label: item.label,
+    url: `${base}${item.hash}`,
+    icon: item.icon,
+  }));
+}
+
+const socialIconByNetwork: Record<string, string> = {
+  GitHub: "Github",
+  LinkedIn: "Linkedin",
+  Email: "Email",
+};
+
+/** Rail social links, derived from cv.json profiles + email. */
+export function getSocial(lang: Locale): SocialItem[] {
+  const { basics } = getCv(lang);
+  return [
+    ...basics.profiles
+      .filter((profile) => socialIconByNetwork[profile.network])
+      .map((profile) => ({
+        title: profile.network,
+        label: profile.network.toLowerCase(),
+        url: profile.url,
+        icon: socialIconByNetwork[profile.network],
+      })),
     {
       title: "Email",
       label: "email",
-      url: "mailto:jseb.guevara@gmail.com",
+      url: `mailto:${basics.email}`,
       icon: "Email",
-    }
-  ]
+    },
+  ];
+}

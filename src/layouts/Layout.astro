@@ -1,76 +1,196 @@
 ---
-import NoiseBackground from "@/components/NoiseBackground.astro";
-import LightsBackground from "@/components/LightsBackground.astro";
-import SideNav from "@/components/SideNav.astro";
-import Header from "@/components/Header.astro";
+import "@/styles/global.css";
+import { ClientRouter } from "astro:transitions";
+import NoiseBackground from "@/components/layout/NoiseBackground.astro";
+import LightsBackground from "@/components/layout/LightsBackground.astro";
+import SideNav from "@/components/layout/SideNav.astro";
+import MobileNav from "@/components/layout/MobileNav.astro";
+import Header from "@/components/layout/Header.astro";
+import { delocalizePath, getLocale, localizePath } from "@/consts/locale";
+import { themeColors } from "@/consts/site";
+import { getCv } from "@/lib/cv";
+
 interface Props {
   title: string;
   description: string;
 }
 
-const { title } = Astro.props;
+const { title, description } = Astro.props;
+const locale = getLocale(Astro.currentLocale);
+const { basics } = getCv(locale);
+
+const site = Astro.site ?? new URL("http://localhost:4321");
+const pathname = Astro.url.pathname;
+const basePath = delocalizePath(pathname);
+const canonicalUrl = new URL(pathname, site);
+const enUrl = new URL(basePath, site);
+const esUrl = new URL(localizePath(basePath, "es"), site);
+const ogImage = new URL("/og.png", site);
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: basics.name,
+  jobTitle: "Full Stack Developer",
+  email: `mailto:${basics.email}`,
+  url: site.toString(),
+  image: ogImage.toString(),
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: basics.location.city,
+    addressRegion: basics.location.region,
+    addressCountry: "AR",
+  },
+  sameAs: basics.profiles.map((profile) => profile.url),
+  knowsLanguage: ["es", "en"],
+};
 ---
 
 <!doctype html>
-<html lang="en" class="lg:scroll-smooth">
+<html lang={locale} class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="{description}" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-      rel="stylesheet"
-    />
-    <meta name="generator" content={Astro.generator} />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Language: honor an explicit choice, else browser language, else timezone. -->
+    <script is:inline>
+      (function () {
+        try {
+          var path = location.pathname;
+          var current = /^\/es(\/|$)/.test(path) ? "es" : "en";
+          var target = localStorage.getItem("lang");
+          if (target !== "en" && target !== "es") {
+            target = null;
+            var langs = navigator.languages || [navigator.language || ""];
+            for (var i = 0; i < langs.length && !target; i++) {
+              var l = String(langs[i]).toLowerCase();
+              if (l.indexOf("es") === 0) target = "es";
+              else if (l.indexOf("en") === 0) target = "en";
+            }
+            if (!target) {
+              var tz = "";
+              try {
+                tz = Intl.DateTimeFormat().resolvedOptions().timeZone || "";
+              } catch (e) {}
+              var esZones = [
+                "America/Argentina",
+                "America/Buenos_Aires",
+                "America/Mexico",
+                "America/Bogota",
+                "America/Lima",
+                "America/Santiago",
+                "America/Montevideo",
+                "America/Asuncion",
+                "America/Caracas",
+                "America/La_Paz",
+                "America/Guayaquil",
+                "America/Havana",
+                "America/Santo_Domingo",
+                "America/Costa_Rica",
+                "America/El_Salvador",
+                "America/Guatemala",
+                "America/Managua",
+                "America/Panama",
+                "America/Tegucigalpa",
+                "America/Hermosillo",
+                "America/Monterrey",
+                "America/Cancun",
+                "Europe/Madrid",
+                "Atlantic/Canary",
+              ];
+              target = "en";
+              for (var j = 0; j < esZones.length; j++) {
+                if (tz.indexOf(esZones[j]) === 0) {
+                  target = "es";
+                  break;
+                }
+              }
+            }
+          }
+          if (target !== current) {
+            var rest =
+              current === "es" ? path.replace(/^\/es(\/|$)/, "/") : path;
+            var dest =
+              target === "es" ? (rest === "/" ? "/es/" : "/es" + rest) : rest;
+            location.replace(dest + location.search + location.hash);
+          }
+        } catch (e) {}
+      })();
+    </script>
+
+    <!-- JS gate: scroll-reveal pre-hiding only applies when JS actually runs. -->
+    <script is:inline>
+      document.documentElement.classList.add("js");
+    </script>
+
+    <!-- Theme: stored choice, else system preference (dark by default). -->
+    <script is:inline>
+      (function () {
+        try {
+          var stored = localStorage.getItem("theme");
+          var theme =
+            stored === "light" || stored === "dark"
+              ? stored
+              : window.matchMedia("(prefers-color-scheme: light)").matches
+                ? "light"
+                : "dark";
+          document.documentElement.dataset.theme = theme;
+        } catch (e) {}
+      })();
+    </script>
+
     <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content={basics.name} />
+    <meta name="theme-color" content={themeColors.dark} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="alternate" hreflang="en" href={enUrl} />
+    <link rel="alternate" hreflang="es" href={esUrl} />
+    <link rel="alternate" hreflang="x-default" href={enUrl} />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={basics.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content={locale === "es" ? "es_AR" : "en_US"} />
+    <meta
+      property="og:locale:alternate"
+      content={locale === "es" ? "en_US" : "es_AR"}
+    />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:creator" content="@_SebGuevara" />
+
+    <meta name="generator" content={Astro.generator} />
+    <script
+      is:inline
+      type="application/ld+json"
+      set:html={JSON.stringify(jsonLd)}
+    />
+    <ClientRouter />
   </head>
-  <body class="bg-tertiary-900 text-white xl:px-20 w-full h-full lg:flex lg:justify-center">
+  <body class="min-h-dvh text-ink antialiased">
     <NoiseBackground />
     <LightsBackground />
     <Header />
-    <slot />
     <SideNav />
+    <div class="lg:pl-20">
+      <div class="mx-auto w-full max-w-6xl">
+        <slot />
+      </div>
+    </div>
+    <MobileNav />
+    <script src="@/scripts/client.ts"></script>
   </body>
 </html>
-<style is:global>
-  html {
-    font-family: "Montserrat", sans-serif;
-    scrollbar-gutter: stable;
-  }
-
-  @supports selector(::-webkit-scrollbar) {
-    ::-webkit-scrollbar {
-      width: 10px;
-      border-radius: 10px;
-    }
-
-    ::-webkit-scrollbar-thumb {
-      border-radius: 10px;
-      background-color: theme(colors.primary.50);
-      border: 2px solid transparent;
-      background-clip: content-box;
-    }
-
-    ::-webkit-scrollbar-thumb:active {
-      background-color: theme(colors.primary.500);
-    }
-
-    ::-webkit-scrollbar-track {
-      background: var(--background-image);
-    }
-
-    ::-webkit-scrollbar-corner {
-      background: var(--background-image);
-    }
-  }
-
-  @supports not selector(::-webkit-scrollbar) {
-    * {
-      scrollbar-color: theme(colors.primary.50) transparent;
-      scrollbar-width: thin;
-    }
-  }
-</style>

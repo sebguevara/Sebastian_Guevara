@@ -1,0 +1,31 @@
+---
+import { Image } from "astro:assets";
+import { getLocale } from "@/consts/locale";
+import { getCv } from "@/lib/cv";
+import { resolveProfileImage } from "@/lib/images/profile";
+
+const { basics } = getCv(getLocale(Astro.currentLocale));
+const imageLoader = resolveProfileImage(basics.image);
+---
+
+<div
+  class="mx-auto w-56 shrink-0 sm:w-64 lg:sticky lg:top-8 lg:mx-0 lg:w-72"
+  data-animate="reveal"
+>
+  <div
+    class="photo-frame overflow-hidden rounded-3xl border border-line shadow-2xl shadow-black/40 ring-1 ring-accent/10"
+  >
+    <Image
+      src={imageLoader()}
+      alt={basics.name}
+      class="h-full w-full object-cover"
+    />
+  </div>
+</div>
+
+<style>
+  /* Softer elevation on light — the dark-theme shadow is too harsh there. */
+  :global([data-theme="light"]) .photo-frame {
+    box-shadow: 0 20px 40px -16px rgb(0 0 0 / 0.22);
+  }
+</style>

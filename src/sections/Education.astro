@@ -1,20 +1,27 @@
 ---
-import EducationItem from "@/components/EducationItem.astro";
-import { education } from "@cv";
+import EducationItem from "@/components/education/EducationItem.astro";
+import SectionHeader from "@/components/ui/SectionHeader.astro";
+import { getCopy } from "@/consts/copy";
+import { getLocale } from "@/consts/locale";
+import { getCv } from "@/lib/cv";
 
-const EDUCATION = education;
-const title = "Education";
+const locale = getLocale(Astro.currentLocale);
+const copy = getCopy(locale);
+const { education } = getCv(locale);
 ---
 
-<h3 class="text-4xl font-bold text-primary-100 pb-6">{title.toUpperCase()}</h3>
-<ol
-  class="relative mt-16 grid lg:gap-x-24 sm:gap-y-16 grid-cols-1 lg:grid-cols-2"
->
-  {
-    EDUCATION.map((education) => (
-      <li class="flex">
-        <EducationItem {...education} />
-      </li>
-    ))
-  }
-</ol>
+<div class="py-14 sm:py-20">
+  <SectionHeader
+    eyebrow={copy.sections.education.eyebrow}
+    title={copy.sections.education.title}
+  />
+  <ol class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    {
+      education.map((item) => (
+        <li class="flex">
+          <EducationItem {...item} />
+        </li>
+      ))
+    }
+  </ol>
+</div>

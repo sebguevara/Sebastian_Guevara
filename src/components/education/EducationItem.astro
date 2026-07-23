@@ -1,0 +1,51 @@
+---
+import { getCopy } from "@/consts/copy";
+import { getLocale } from "@/consts/locale";
+import { formatMonth } from "@/lib/cv/dates";
+import type { EducationItem as EducationItemType } from "@/lib/cv";
+
+type Props = EducationItemType;
+
+const { institution, url, area, studyType, startDate, endDate, score, note } =
+  Astro.props;
+
+const lang = getLocale(Astro.currentLocale);
+const copy = getCopy(lang);
+const period = `${formatMonth(startDate, lang)} — ${
+  endDate ? formatMonth(endDate, lang) : copy.experience.present
+}`;
+---
+
+<article class="card flex w-full flex-col p-5 sm:p-6" data-animate="reveal">
+  <div class="flex items-start justify-between gap-3">
+    <span class="chip">{studyType}</span>
+    <p class="text-right font-mono text-xs text-faint">{period}</p>
+  </div>
+  <h3 class="mt-4 text-lg font-semibold tracking-tight text-ink">{area}</h3>
+  {
+    url ? (
+      <a
+        href={url}
+        target="_blank"
+        rel="noopener"
+        class="mt-1 w-fit text-sm text-muted transition-colors duration-300 hover:text-accent"
+      >
+        {institution}
+      </a>
+    ) : (
+      <p class="mt-1 text-sm text-muted">{institution}</p>
+    )
+  }
+  {
+    (score || note) && (
+      <div class="mt-auto flex flex-wrap items-center gap-x-4 gap-y-1 pt-4">
+        {score && (
+          <p class="font-mono text-xs text-accent">
+            {copy.education.average}: {score}
+          </p>
+        )}
+        {note && <p class="font-mono text-xs text-faint">{note}</p>}
+      </div>
+    )
+  }
+</article>

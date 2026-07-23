@@ -1,0 +1,54 @@
+---
+import Github from "@/components/icons/brands/Github.astro";
+import Linkedin from "@/components/icons/brands/Linkedin.astro";
+import X from "@/components/icons/brands/X.astro";
+import Email from "@/components/icons/brands/Email.astro";
+import { getCopy } from "@/consts/copy";
+import { getLocale } from "@/consts/locale";
+import { getCv } from "@/lib/cv";
+
+const locale = getLocale(Astro.currentLocale);
+const copy = getCopy(locale);
+const { basics } = getCv(locale);
+
+const Icons: Record<string, any> = { GitHub: Github, LinkedIn: Linkedin, X };
+const socialProfiles = basics.profiles.filter(
+  (profile) => Icons[profile.network],
+);
+---
+
+<div class="py-14 sm:py-20">
+  <div
+    class="card flex flex-col items-center gap-5 px-6 py-12 text-center sm:px-10 sm:py-16"
+    data-animate="reveal"
+  >
+    <p class="eyebrow">{copy.sections.contact.eyebrow}</p>
+    <h2 class="section-title max-w-xl">{copy.sections.contact.title}</h2>
+    <p class="max-w-md text-sm leading-relaxed text-muted sm:text-base">
+      {copy.contact.body}
+    </p>
+    <a href={`mailto:${basics.email}`} class="btn-primary mt-2">
+      <Email class="size-4" />
+      {copy.contact.cta}
+    </a>
+    <p class="font-mono text-xs text-faint">{basics.email}</p>
+    <div class="flex items-center gap-5">
+      {
+        socialProfiles.map((profile) => {
+          const Icon = Icons[profile.network];
+          return (
+            <a
+              href={profile.url}
+              target="_blank"
+              rel="noopener"
+              aria-label={profile.network}
+              class="text-faint transition-colors duration-300 hover:text-accent"
+            >
+              <Icon class="size-5" />
+            </a>
+          );
+        })
+      }
+    </div>
+  </div>
+</div>

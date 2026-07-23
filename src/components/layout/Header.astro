@@ -1,0 +1,41 @@
+---
+import Logo from "@/components/icons/Logo.astro";
+import LanguageToggle from "@/components/layout/LanguageToggle.astro";
+import ThemeToggle from "@/components/layout/ThemeToggle.astro";
+import { getCopy } from "@/consts/copy";
+import { getLocale, localizePath } from "@/consts/locale";
+import { getCv } from "@/lib/cv";
+
+const locale = getLocale(Astro.currentLocale);
+const copy = getCopy(locale);
+const { basics } = getCv(locale);
+const homeUrl = `${localizePath("/", locale)}#home`;
+---
+
+<header class="fixed inset-x-0 top-0 z-40 lg:hidden">
+  <div
+    class="flex h-14 items-center justify-between gap-3 border-b border-line/60 bg-bg/70 px-5 backdrop-blur-xl"
+  >
+    <a href={homeUrl} class="flex items-center gap-2.5" aria-label={copy.nav.home}>
+      <Logo class="w-7" />
+      <span class="text-sm font-semibold tracking-tight">{basics.name}</span>
+    </a>
+    <div class="flex items-center gap-3.5">
+      <a
+        href={`mailto:${basics.email}`}
+        class="chip transition-colors hover:border-accent/40 hover:text-ink"
+      >
+        <span class="relative flex size-1.5">
+          <span
+            class="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-60"
+          ></span>
+          <span class="relative inline-flex size-1.5 rounded-full bg-accent"
+          ></span>
+        </span>
+        {copy.hero.available}
+      </a>
+      <ThemeToggle />
+      <LanguageToggle />
+    </div>
+  </div>
+</header>

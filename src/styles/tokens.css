@@ -1,0 +1,39 @@
+/* Design tokens — monochromatic base + single rose accent.
+   Dark is the default palette; light overrides live on [data-theme="light"],
+   which an inline script sets on <html> before first paint (no flash). */
+@theme {
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono Variable", ui-monospace, "SFMono-Regular", monospace;
+
+  --color-bg: #0a0a0b;
+  --color-surface: #131315;
+  --color-elevated: #1a1a1d;
+  --color-line: #26262a;
+
+  /* Text on dark: bright, high-contrast (ink ~18:1, muted ~11:1, faint ~6:1) */
+  --color-ink: #f7f7f8;
+  --color-muted: #b6b6bf;
+  --color-faint: #85858f;
+
+  --color-accent: #d05c76;
+  --color-accent-strong: #e37f96;
+}
+
+/* Light theme — same neutral scale mirrored, accent darkened for contrast.
+   Unlayered so it wins over the @theme defaults.
+   Text on light: deep, high-contrast (ink ~16:1, muted ~9:1, faint ~5.5:1) */
+:root[data-theme="light"] {
+  color-scheme: light;
+
+  --color-bg: #faf9fa;
+  --color-surface: #ffffff;
+  --color-elevated: #f1eef0;
+  --color-line: #ddd8db;
+
+  --color-ink: #171516;
+  --color-muted: #454044;
+  --color-faint: #6b6469;
+
+  --color-accent: #a13350;
+  --color-accent-strong: #832940;
+}

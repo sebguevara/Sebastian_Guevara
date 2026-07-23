@@ -1,0 +1,195 @@
+---
+import Github from "@/components/icons/brands/Github.astro";
+import Link from "@/components/icons/Link.astro";
+import Carousel from "@/components/ui/Carousel.astro";
+import LinkButton from "@/components/ui/LinkButton.astro";
+import { getCopy } from "@/consts/copy";
+import { getLocale, localizePath } from "@/consts/locale";
+import { formatMonth } from "@/lib/cv/dates";
+import { getCv } from "@/lib/cv";
+
+interface Props {
+  slug: string;
+}
+
+const { slug } = Astro.props;
+const locale = getLocale(Astro.currentLocale);
+const copy = getCopy(locale);
+const { projects } = getCv(locale);
+
+const project = projects.find((item) => item.slug === slug);
+if (!project) {
+  throw new Error(`Unknown project slug: ${slug}`);
+}
+
+const {
+  name,
+  image,
+  images,
+  description,
+  details,
+  isActive,
+  category,
+  startDate,
+  endDate,
+  highlights,
+  technologies,
+  url,
+  github,
+} = project;
+
+const gallery = images.length > 0 ? images : [image];
+const paragraphs = details.length > 0 ? details : [description];
+const backUrl = `${localizePath("/", locale)}#projects`;
+const period = startDate
+  ? `${formatMonth(startDate, locale)} — ${
+      endDate ? formatMonth(endDate, locale) : copy.experience.present
+    }`
+  : null;
+---
+
+<article
+  class="flex w-full flex-col px-5 pb-28 pt-24 sm:px-8 lg:px-12 lg:pb-20 lg:pt-16"
+  data-animate="hero"
+>
+  <a
+    href={backUrl}
+    class="inline-flex w-fit items-center gap-2 font-mono text-xs uppercase tracking-[0.15em] text-faint transition-colors duration-300 hover:text-accent"
+    data-hero-item
+  >
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class="size-4"
+    >
+      <path d="m12 19-7-7 7-7"></path>
+      <path d="M19 12H5"></path>
+    </svg>
+    {copy.projects.back}
+  </a>
+
+  <header class="mt-8" data-hero-item>
+    <div class="flex flex-wrap items-center gap-2.5">
+      {category && <span class="chip">{category}</span>}
+      {
+        isActive && (
+          <span class="chip border-accent/30 text-accent">
+            <span class="relative flex size-1.5">
+              <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-60" />
+              <span class="relative inline-flex size-1.5 rounded-full bg-accent" />
+            </span>
+            {copy.projects.live}
+          </span>
+        )
+      }
+      {period && <span class="font-mono text-xs text-faint">{period}</span>}
+    </div>
+
+    <h1
+      class="mt-4 bg-linear-to-br from-ink via-ink to-muted bg-clip-text text-4xl font-extrabold leading-[1.05] tracking-tight text-transparent sm:text-5xl md:text-6xl"
+      transition:name={`project-title-${slug}`}
+    >
+      {name}
+    </h1>
+
+    <p class="mt-5 max-w-3xl text-base leading-relaxed text-muted sm:text-lg">
+      {description}
+    </p>
+  </header>
+
+  <div class="mt-10" data-hero-item>
+    <Carousel
+      images={gallery}
+      alt={name}
+      aspect="aspect-[16/9]"
+      class="rounded-2xl border border-line shadow-2xl shadow-black/30"
+      transitionName={`project-media-${slug}`}
+      widths={[640, 1024, 1600]}
+      sizes="(min-width: 1280px) 1100px, 100vw"
+      eagerFirst
+    />
+  </div>
+
+  <div
+    class="mt-12 grid gap-12 lg:mt-16 lg:grid-cols-[1fr_17rem] lg:gap-16"
+  >
+    <div>
+      <h2
+        class="mb-5 font-mono text-xs uppercase tracking-[0.2em] text-faint"
+        data-animate="reveal"
+      >
+        {copy.projects.about}
+      </h2>
+      <div class="flex flex-col gap-5">
+        {
+          paragraphs.map((paragraph) => (
+            <p
+              class="text-base leading-relaxed text-muted sm:text-lg"
+              data-animate="reveal"
+            >
+              {paragraph}
+            </p>
+          ))
+        }
+      </div>
+
+      {
+        highlights && highlights.length > 0 && (
+          <p
+            class="mt-8 flex flex-wrap gap-x-3 gap-y-1.5 font-mono text-xs text-faint"
+            data-animate="reveal"
+          >
+            {highlights.map((tag) => (
+              <span>#{tag}</span>
+            ))}
+          </p>
+        )
+      }
+    </div>
+
+    <aside class="flex flex-col gap-8 lg:sticky lg:top-8 lg:self-start">
+      <div data-animate="reveal">
+        <h2 class="mb-4 font-mono text-xs uppercase tracking-[0.2em] text-faint">
+          {copy.projects.stack}
+        </h2>
+        <ul class="flex flex-wrap gap-2">
+          {
+            technologies.map((tech) => (
+              <li>
+                <span class="chip">{tech}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      {
+        (url || github) && (
+          <div data-animate="reveal">
+            <h2 class="mb-4 font-mono text-xs uppercase tracking-[0.2em] text-faint">
+              {copy.projects.links}
+            </h2>
+            <div class="flex flex-col items-start gap-3">
+              {url && (
+                <LinkButton href={url}>
+                  <Link class="size-4" />
+                  {copy.projects.preview}
+                </LinkButton>
+              )}
+              {github && (
+                <LinkButton href={github}>
+                  <Github class="size-4" />
+                  {copy.projects.code}
+                </LinkButton>
+              )}
+            </div>
+          </div>
+        )
+      }
+    </aside>
+  </div>
+</article>

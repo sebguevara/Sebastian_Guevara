@@ -1,13 +1,36 @@
 ---
+import { getCopy } from "@/consts/copy";
+import { getLocale, localizePath } from "@/consts/locale";
+
+interface Props {
+  error: string;
+  message: string;
+  contextMessage: string;
+}
+
 const { error, message, contextMessage } = Astro.props;
+const locale = getLocale(Astro.currentLocale);
+const copy = getCopy(locale);
+const homeUrl = localizePath("/", locale);
 ---
 
-<section
-  class="m-auto flex w-full h-screen items-center justify-center text-primary"
->
-  <div class="mb-12 flex flex-col gap-y-8 text-center">
-    <h1 class="sm:text-[7rem] text-4xl font-bold flex self-center">{error}</h1>
-    <p class="sm:text-2xl text-lg">{message}</p>
-    <p class="sm:text-xl text-sm">{contextMessage}</p>
+<section class="flex min-h-dvh w-full items-center justify-center px-5">
+  <div class="flex flex-col items-center gap-5 text-center" data-animate="hero">
+    <p class="eyebrow" data-hero-item>{copy.error.label}</p>
+    <h1
+      class="bg-linear-to-br from-ink to-muted bg-clip-text text-8xl font-extrabold tracking-tight text-transparent sm:text-9xl"
+      data-hero-item
+    >
+      {error}
+    </h1>
+    <p class="text-xl font-semibold text-ink sm:text-2xl" data-hero-item>
+      {message}
+    </p>
+    <p class="text-sm text-muted sm:text-base" data-hero-item>
+      {contextMessage}
+    </p>
+    <a href={homeUrl} class="btn-primary mt-4" data-hero-item>
+      {copy.error.backHome}
+    </a>
   </div>
 </section>

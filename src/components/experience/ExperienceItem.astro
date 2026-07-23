@@ -1,0 +1,100 @@
+---
+import { getCopy } from "@/consts/copy";
+import { getLocale } from "@/consts/locale";
+import { formatMonth } from "@/lib/cv/dates";
+import type { WorkItem } from "@/lib/cv";
+
+type Props = WorkItem;
+
+const {
+  company,
+  url,
+  location,
+  position,
+  startDate,
+  endDate,
+  summary,
+  highlights,
+  data,
+} = Astro.props;
+
+const lang = getLocale(Astro.currentLocale);
+const copy = getCopy(lang);
+const period = `${formatMonth(startDate, lang)} — ${
+  endDate ? formatMonth(endDate, lang) : copy.experience.present
+}`;
+---
+
+<article
+  class="relative border-l border-line pl-6 sm:pl-8 lg:grid lg:grid-cols-[15rem_1fr] lg:gap-x-12"
+  data-animate="reveal"
+>
+  <span
+    class="absolute -left-[5px] top-1.5 size-2.5 rounded-full bg-accent shadow-[0_0_12px_0] shadow-accent/50"
+    aria-hidden="true"></span>
+
+  <div class="lg:sticky lg:top-8 lg:self-start lg:pb-2">
+    <p class="font-mono text-xs text-faint">{period}</p>
+    <h3 class="mt-1.5 text-xl font-semibold tracking-tight text-ink">
+      {position}
+    </h3>
+    {
+      url ? (
+        <a
+          href={url}
+          target="_blank"
+          rel="noopener"
+          class="mt-0.5 inline-block text-sm font-medium text-accent transition-colors duration-300 hover:text-accent-strong"
+        >
+          {company}
+        </a>
+      ) : (
+        <p class="mt-0.5 text-sm font-medium text-accent">{company}</p>
+      )
+    }
+    {
+      location && (
+        <p class="mt-1 font-mono text-xs text-faint">{location}</p>
+      )
+    }
+  </div>
+
+  <div class="mt-5 flex flex-col gap-6 lg:mt-0 lg:gap-8">
+    {
+      summary && (
+        <p class="text-sm leading-relaxed text-muted">{summary}</p>
+      )
+    }
+
+    {
+      highlights && highlights.length > 0 && (
+        <ul class="flex flex-col gap-3">
+          {highlights.map((highlight) => (
+            <li class="flex gap-3 text-sm leading-relaxed text-muted">
+              <span
+                class="mt-[0.4375rem] size-1.5 shrink-0 rounded-full bg-accent/60"
+                aria-hidden="true"
+              />
+              {highlight}
+            </li>
+          ))}
+        </ul>
+      )
+    }
+
+    {
+      data && data.length > 0 && (
+        <div class="grid grid-cols-1 gap-5 pt-2 sm:gap-6 xl:grid-cols-3">
+          {data.map((project) => (
+            <div class="card p-5 sm:p-6">
+              <h4 class="text-sm font-semibold text-ink">{project.company}</h4>
+              <p class="mt-2 text-sm leading-relaxed text-muted">
+                {project.summary}
+              </p>
+            </div>
+          ))}
+        </div>
+      )
+    }
+  </div>
+</article>

@@ -1,0 +1,46 @@
+---
+import { getCopy } from "@/consts/copy";
+import { delocalizePath, getLocale, localizePath } from "@/consts/locale";
+
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+const locale = getLocale(Astro.currentLocale);
+const copy = getCopy(locale);
+const target = locale === "en" ? "es" : "en";
+const href = localizePath(delocalizePath(Astro.url.pathname), target);
+---
+
+<a
+  href={href}
+  data-lang-switch={target}
+  aria-label={copy.toggles.language}
+  title={copy.toggles.language}
+  class:list={[
+    "font-mono text-[0.6875rem] font-semibold tracking-widest text-faint transition-colors duration-300 hover:text-accent",
+    className,
+  ]}
+>
+  {target.toUpperCase()}
+</a>
+
+<script>
+  // Persist the explicit choice so the head redirect script honors it, and
+  // remember the scroll position so the ClientRouter swap keeps the reader
+  // exactly where they were. Delegated: survives ClientRouter DOM swaps.
+  document.addEventListener("click", (event) => {
+    const link = (event.target as HTMLElement).closest<HTMLAnchorElement>(
+      "[data-lang-switch]",
+    );
+    if (!link) return;
+    const target = link.dataset.langSwitch;
+    if (target) localStorage.setItem("lang", target);
+    try {
+      sessionStorage.setItem("lang-switch-scroll", String(window.scrollY));
+    } catch {
+      /* sessionStorage unavailable */
+    }
+  });
+</script>

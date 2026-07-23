@@ -1,16 +1,64 @@
 ---
-import FooterContent from "@/components/FooterContent.astro";
-import SocialButtons from "@/components/SocialButtons.astro";
+import Github from "@/components/icons/brands/Github.astro";
+import Linkedin from "@/components/icons/brands/Linkedin.astro";
+import Instagram from "@/components/icons/brands/Instagram.astro";
+import X from "@/components/icons/brands/X.astro";
+import Email from "@/components/icons/brands/Email.astro";
+import { getCopy } from "@/consts/copy";
+import { getLocale } from "@/consts/locale";
+import { getCv } from "@/lib/cv";
+
+const locale = getLocale(Astro.currentLocale);
+const copy = getCopy(locale);
+const { basics } = getCv(locale);
+
+const year = new Date().getFullYear();
+
+const Icons: Record<string, any> = {
+  GitHub: Github,
+  LinkedIn: Linkedin,
+  Instagram: Instagram,
+  X: X,
+};
+
+const links = [
+  ...basics.profiles
+    .filter((profile) => Icons[profile.network])
+    .map((profile) => ({
+      label: profile.network,
+      url: profile.url,
+      Icon: Icons[profile.network],
+    })),
+  {
+    label: "Email",
+    url: `mailto:${basics.email}`,
+    Icon: Email,
+  },
+];
 ---
 
-<footer
-  class="relative flex w-full flex-col place-items-center pb-10 pt-6 md:flex-row justify-center md:pt-16"
->
-  <hr
-    class="absolute top-0 h-[2px] w-full min-w-[18rem] border-t-0 bg-transparent bg-gradient-to-r from-transparent via-secondary-100 to-transparent bg-center md:my-9"
-  />
-  <div class="flex flex-col gap-y-6 items-center justify-center">
-    <FooterContent />
-    <SocialButtons />
+<footer class="mt-6 border-t border-line/60 pb-6 pt-8" data-animate="reveal">
+  <div class="flex flex-col items-center gap-5 sm:flex-row sm:justify-between">
+    <p class="text-center text-sm text-faint">
+      &copy; {year}
+      <span class="font-medium text-muted">{basics.name}</span> — {copy.footer.rights}
+    </p>
+    <ul class="flex items-center gap-5">
+      {
+        links.map(({ label, url, Icon }) => (
+          <li>
+            <a
+              href={url}
+              target="_blank"
+              rel="noopener"
+              aria-label={label}
+              class="text-faint transition-colors duration-300 hover:text-accent"
+            >
+              <Icon class="size-5" />
+            </a>
+          </li>
+        ))
+      }
+    </ul>
   </div>
 </footer>

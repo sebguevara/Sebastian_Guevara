@@ -1,0 +1,84 @@
+---
+import Github from "@/components/icons/brands/Github.astro";
+import Link from "@/components/icons/Link.astro";
+import { getCopy } from "@/consts/copy";
+import { getLocale, localizePath } from "@/consts/locale";
+import type { ProjectItem } from "@/lib/cv";
+
+type Props = ProjectItem;
+
+const { slug, name, description, isActive, url, github, technologies } =
+  Astro.props;
+const locale = getLocale(Astro.currentLocale);
+const copy = getCopy(locale);
+const detailUrl = localizePath(`/projects/${slug}`, locale);
+---
+
+<article
+  class="card flex h-full cursor-pointer flex-col p-5 sm:p-6"
+  data-animate="reveal"
+  data-card-href={detailUrl}
+>
+  <div class="flex items-start justify-between gap-3">
+    <h4 class="text-base font-semibold tracking-tight text-ink">
+      <a
+        href={detailUrl}
+        class="transition-colors duration-300 hover:text-accent"
+        transition:name={`project-title-${slug}`}
+      >
+        {name}
+      </a>
+    </h4>
+    <div class="flex shrink-0 items-center gap-2.5 pt-1">
+      {
+        isActive && (
+          <span
+            class="size-1.5 rounded-full bg-accent"
+            title={copy.projects.live}
+            aria-label={copy.projects.live}
+          />
+        )
+      }
+      {
+        github && (
+          <a
+            href={github}
+            target="_blank"
+            rel="noopener"
+            aria-label={`${name} — ${copy.projects.code}`}
+            class="text-faint transition-colors duration-300 hover:text-accent"
+          >
+            <Github class="size-4" />
+          </a>
+        )
+      }
+      {
+        url && (
+          <a
+            href={url}
+            target="_blank"
+            rel="noopener"
+            aria-label={`${name} — ${copy.projects.preview}`}
+            class="text-faint transition-colors duration-300 hover:text-accent"
+          >
+            <Link class="size-4" />
+          </a>
+        )
+      }
+    </div>
+  </div>
+
+  <p class="mt-2.5 line-clamp-4 text-sm leading-relaxed text-muted">
+    {description}
+  </p>
+
+  <ul class="mt-auto flex flex-wrap gap-1.5 pt-5">
+    {
+      technologies.map((tech) => (
+        <li>
+          <span class="chip">{tech}</span>
+        </li>
+      ))
+    }
+  </ul>
+</article>

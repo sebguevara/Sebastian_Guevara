@@ -1,18 +1,27 @@
 ---
-import ExperienceItem from "@/components/ExperienceItem.astro";
-import { work } from "@cv";
+import ExperienceItem from "@/components/experience/ExperienceItem.astro";
+import SectionHeader from "@/components/ui/SectionHeader.astro";
+import { getCopy } from "@/consts/copy";
+import { getLocale } from "@/consts/locale";
+import { getCv } from "@/lib/cv";
 
-const EXPERIENCIE = work;
-const title = "Laboral Experience";
+const locale = getLocale(Astro.currentLocale);
+const copy = getCopy(locale);
+const { work } = getCv(locale);
 ---
 
-<h3 class="text-4xl font-bold text-primary-100 pb-6">{title.toUpperCase()}</h3>
-<ol class="relative mt-16 pb-20 sm:pb-0">
-  {
-    EXPERIENCIE.map((experiencie) => (
-      <li>
-        <ExperienceItem {...experiencie} />
-      </li>
-    ))
-  }
-</ol>
+<div class="py-14 sm:py-20">
+  <SectionHeader
+    eyebrow={copy.sections.experience.eyebrow}
+    title={copy.sections.experience.title}
+  />
+  <ol class="flex flex-col gap-20 sm:gap-24 lg:gap-32">
+    {
+      work.map((experience) => (
+        <li>
+          <ExperienceItem {...experience} />
+        </li>
+      ))
+    }
+  </ol>
+</div>

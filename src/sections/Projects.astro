@@ -1,107 +1,45 @@
 ---
-import Angular from "@/components/icons/brands/Angular.astro";
-import Tailwind from "@/components/icons/brands/Tailwind.astro";
-import Github from "@/components/icons/brands/Github.astro";
-import MongoDB from "@/components/icons/brands/MongoDB.astro";
-import SocketIO from "@/components/icons/brands/SocketIO.astro";
-import Express from "@/components/icons/brands/Express.astro";
-import Ionic from "@/components/icons/brands/Ionic.astro";
-import OpenAI from "@/components/icons/brands/OpenAI.astro";
-import Maps from "@/components/icons/brands/Maps.astro";
-import Meta from "@/components/icons/brands/Meta.astro";
-import Link from "@/components/icons/Link.astro";
-import LinkButton from "@/components/LinkButton.astro";
-import { Image } from "astro:assets";
-import type { ImageMetadata } from "astro";
-import { projects } from "@cv";
+import ProjectCard from "@/components/projects/ProjectCard.astro";
+import ProjectCardCompact from "@/components/projects/ProjectCardCompact.astro";
+import SectionHeader from "@/components/ui/SectionHeader.astro";
+import { getCopy } from "@/consts/copy";
+import { getLocale } from "@/consts/locale";
+import { getCv } from "@/lib/cv";
 
-const images = import.meta.glob<{ default: ImageMetadata }>(
-  "/src/assets/projects/*.{webp,png}"
-);
+const locale = getLocale(Astro.currentLocale);
+const copy = getCopy(locale);
+const { projects } = getCv(locale);
 
-const Icons: Record<string, any> = {
-  Tailwind,
-  Angular,
-  Github,
-  MongoDB,
-  SocketIO,
-  Ionic,
-  Express,
-  OpenAI,
-  Maps,
-  Meta,
-  Link,
-};
-
-const PROJECTS = projects;
-const title = "Projects";
+// Flagship products get the full card; the rest render compact.
+const featured = projects.filter((project) => project.featured);
+const others = projects.filter((project) => !project.featured);
 ---
 
-<h3 class="text-4xl font-bold text-primary-100 py-20">{title.toUpperCase()}</h3>
-<div class="flex flex-col gap-y-16 mb-40">
-  {
-    PROJECTS.map(
-      ({ image, name, description, highlights, url, github, technologies }) => {
-        return (
-          <article class="flex flex-col xl:flex-row xl:gap-x-12">
-            <div class="w-fit max-w-[26rem]">
-              <div class="relative flex flex-col items-center col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-clip rounded-xl sm:rounded-xl md:group-hover:shadow-2xl lg:border lg:border-gray-800 lg:hover:border-gray-700 lg:hover:bg-gray-800/50">
-                <Image
-                  alt={name}
-                  class="object-cover w-full h-full transition duration-500 hover:scale-105 rounded-xl"
-                  src={images[image]()}
-                />
-              </div>
-            </div>
+<div class="py-14 sm:py-20">
+  <SectionHeader
+    eyebrow={copy.sections.projects.eyebrow}
+    title={copy.sections.projects.title}
+  />
 
-            <div class="w-full md:max-w-xl relative pt-6 xl:pt-0">
-              <h3 class="text-2xl font-bold text-gray-800 dark:text-white">
-                {name}
-              </h3>
-              <ul class="flex flex-wrap mt-2">
-                {technologies.map((tech) => {
-                  const Icon = Icons[tech];
-                  return (
-                    <li class="flex items-center justify-center text-secondary-100">
-                      <span
-                        class={`flex gap-x-2 rounded-full text-xs py-1 px-2 items-center`}
-                      >
-                        <Icon class="size-4" />
-                      </span>
-                    </li>
-                  );
-                })}
-              </ul>
-              <div class="flex flex-wrap mt-2">
-                <div class="mt-2">{description}</div>
-                <div class="flex-wrap mt-2 hidden lg:flex">
-                  {highlights.map((tag) => (
-                    <div class="mr-2 mb-2 bg-secondary-700 text-secondary-100 rounded-full">
-                      <span class="flex gap-x-2 rounded-full text-xs py-1 px-2">
-                        {"#" + tag}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-                <footer class="flex items-end justify-start mt-4 gap-x-4 xl:absolute bottom-0">
-                  {github && (
-                    <LinkButton href={github}>
-                      <Github class="size-6" />
-                      Code
-                    </LinkButton>
-                  )}
-                  {url && (
-                    <LinkButton href={url}>
-                      <Link class="size-4" />
-                      Preview
-                    </LinkButton>
-                  )}
-                </footer>
-              </div>
-            </div>
-          </article>
-        );
-      }
+  <div class="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-14">
+    {featured.map((project) => <ProjectCard {...project} />)}
+  </div>
+
+  {
+    others.length > 0 && (
+      <>
+        <h3
+          class="mb-8 mt-24 font-mono text-xs uppercase tracking-[0.2em] text-faint sm:mt-28"
+          data-animate="reveal"
+        >
+          {copy.projects.more}
+        </h3>
+        <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3 lg:gap-10">
+          {others.map((project) => (
+            <ProjectCardCompact {...project} />
+          ))}
+        </div>
+      </>
     )
   }
 </div>

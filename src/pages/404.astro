@@ -1,17 +1,24 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import Error from "@/sections/Error.astro";
+import { getCopy } from "@/consts/copy";
+import { getLocale } from "@/consts/locale";
+import { getSiteMeta } from "@/consts/site";
+
+const locale = getLocale(Astro.currentLocale);
+const site = getSiteMeta(locale);
+const copy = getCopy(locale);
 ---
 
 <Layout
-  description="Portfolio of Sebastian Guevara, a software engineer based in Corrientes, Argentina"
-  title="Sebastian Guevara - Page not found"
+  description={site.description}
+  title={`${site.title} — ${copy.meta.notFoundTitle}`}
 >
   <main>
     <Error
       error="404"
-      message="Page not found"
-      contextMessage="The page you are looking for does not exist."
+      message={copy.error.notFound}
+      contextMessage={copy.error.notFoundContext}
     />
   </main>
 </Layout>

@@ -1,0 +1,68 @@
+---
+import About from "@/components/icons/About.astro";
+import Briefcase from "@/components/icons/Briefcase.astro";
+import FileCode from "@/components/icons/Filecode.astro";
+import School from "@/components/icons/School.astro";
+import Logo from "@/components/icons/Logo.astro";
+import { getCopy } from "@/consts/copy";
+import { getLocale } from "@/consts/locale";
+import { getNav } from "@/consts/navigation";
+
+const locale = getLocale(Astro.currentLocale);
+const copy = getCopy(locale);
+const nav = getNav(locale);
+
+const Icons: Record<string, any> = {
+  About,
+  Briefcase,
+  FileCode,
+  School,
+  Logo,
+};
+---
+
+<nav
+  class="fixed bottom-4 left-1/2 z-50 -translate-x-1/2 lg:hidden"
+  aria-label={copy.nav.aria}
+>
+  <ul
+    class="flex items-center gap-1 rounded-full border border-line bg-surface/85 p-1.5 shadow-2xl shadow-black/50 backdrop-blur-xl"
+  >
+    {
+      nav.map((item) => {
+        const Icon = Icons[item.icon];
+        return (
+          <li>
+            <a
+              href={item.url}
+              data-section-link={item.label}
+              class="dock-link flex size-11 items-center justify-center rounded-full text-muted transition-colors duration-300"
+              aria-label={item.title}
+            >
+              <Icon class="size-5" />
+              <span class="sr-only">{item.title}</span>
+            </a>
+          </li>
+        );
+      })
+    }
+  </ul>
+</nav>
+
+<style>
+  /* The heavy dark-theme shadow reads as a smudge on light backgrounds. */
+  :global([data-theme="light"]) ul {
+    box-shadow: 0 20px 40px -16px rgb(0 0 0 / 0.25);
+  }
+
+  .dock-link:global(.active) {
+    color: var(--color-accent);
+    background-color: color-mix(in srgb, var(--color-accent) 12%, transparent);
+  }
+
+  @media (hover: hover) {
+    .dock-link:hover {
+      color: var(--color-ink);
+    }
+  }
+</style>

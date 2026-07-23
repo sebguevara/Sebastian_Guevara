@@ -1,0 +1,173 @@
+---
+import { Image } from "astro:assets";
+import { getCopy } from "@/consts/copy";
+import { getLocale } from "@/consts/locale";
+import { resolveProjectImages } from "@/lib/images/projects";
+
+interface Props {
+  images: string[];
+  alt: string;
+  /** Aspect utility classes for the media area. */
+  aspect?: string;
+  class?: string;
+  /** Shared element name for view transitions (card ↔ detail morph). */
+  transitionName?: string;
+  widths?: number[];
+  sizes?: string;
+  /** Load the first slide eagerly (above-the-fold galleries). */
+  eagerFirst?: boolean;
+}
+
+const {
+  images,
+  alt,
+  aspect = "aspect-[16/9]",
+  class: className,
+  transitionName,
+  widths = [480, 800, 1200],
+  sizes = "(min-width: 1024px) 50vw, 100vw",
+  eagerFirst = false,
+} = Astro.props;
+
+const copy = getCopy(getLocale(Astro.currentLocale));
+const loaders = resolveProjectImages(images);
+const multiple = loaders.length > 1;
+---
+
+<div
+  class:list={["carousel group/carousel relative w-full overflow-hidden", className]}
+  data-carousel
+  transition:name={transitionName}
+>
+  <div
+    class:list={[
+      "carousel-track flex h-full w-full snap-x snap-mandatory overflow-x-auto scroll-smooth",
+      aspect,
+    ]}
+    data-carousel-track
+    tabindex={multiple ? 0 : undefined}
+    aria-roledescription="carousel"
+    aria-label={alt}
+  >
+    {
+      loaders.map((loader, index) => (
+        <div class="h-full w-full shrink-0 snap-center">
+          <Image
+            alt={`${alt} — ${index + 1}`}
+            src={loader()}
+            widths={widths}
+            sizes={sizes}
+            loading={eagerFirst && index === 0 ? "eager" : "lazy"}
+            class="h-full w-full object-cover object-top"
+          />
+        </div>
+      ))
+    }
+  </div>
+
+  <slot />
+
+  {
+    multiple && (
+      <>
+        <button
+          type="button"
+          data-carousel-prev
+          aria-label={copy.carousel.prev}
+          class="carousel-arrow left-3"
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="size-4">
+            <path d="m15 18-6-6 6-6" />
+          </svg>
+        </button>
+        <button
+          type="button"
+          data-carousel-next
+          aria-label={copy.carousel.next}
+          class="carousel-arrow right-3"
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="size-4">
+            <path d="m9 18 6-6-6-6" />
+          </svg>
+        </button>
+        <div class="absolute inset-x-0 bottom-3 flex justify-center gap-1.5">
+          {loaders.map((_, index) => (
+            <button
+              type="button"
+              data-carousel-dot
+              aria-label={`${copy.carousel.goTo} ${index + 1}`}
+              class="carousel-dot"
+            />
+          ))}
+        </div>
+      </>
+    )
+  }
+</div>
+
+<style>
+  /* Hide the horizontal scrollbar — navigation is swipe/arrows/dots. */
+  .carousel-track {
+    scrollbar-width: none;
+  }
+  .carousel-track::-webkit-scrollbar {
+    display: none;
+  }
+
+  .carousel-arrow {
+    position: absolute;
+    top: 50%;
+    translate: 0 -50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 9999px;
+    border: 1px solid color-mix(in srgb, var(--color-line) 60%, transparent);
+    background-color: color-mix(in srgb, var(--color-bg) 65%, transparent);
+    color: var(--color-ink);
+    backdrop-filter: blur(8px);
+    cursor: pointer;
+    opacity: 0;
+    transition:
+      opacity 0.25s ease,
+      background-color 0.25s ease,
+      border-color 0.25s ease;
+  }
+
+  /* Arrows appear on hover/focus; always visible on touch (no hover). */
+  .carousel:hover .carousel-arrow,
+  .carousel:focus-within .carousel-arrow {
+    opacity: 1;
+  }
+
+  @media (hover: none) {
+    .carousel-arrow {
+      opacity: 1;
+    }
+  }
+
+  @media (hover: hover) {
+    .carousel-arrow:hover {
+      background-color: color-mix(in srgb, var(--color-bg) 85%, transparent);
+      border-color: color-mix(in srgb, var(--color-accent) 40%, transparent);
+    }
+  }
+
+  .carousel-dot {
+    width: 0.4rem;
+    height: 0.4rem;
+    border-radius: 9999px;
+    background-color: color-mix(in srgb, var(--color-ink) 40%, transparent);
+    cursor: pointer;
+    transition:
+      background-color 0.3s ease,
+      width 0.3s ease;
+  }
+
+  .carousel-dot:global(.is-active) {
+    width: 1.1rem;
+    background-color: var(--color-accent);
+  }
+</style>

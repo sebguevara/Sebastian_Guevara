@@ -1,0 +1,75 @@
+---
+import Moon from "@/components/icons/Moon.astro";
+import Sun from "@/components/icons/Sun.astro";
+import { getCopy } from "@/consts/copy";
+import { getLocale } from "@/consts/locale";
+
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+const copy = getCopy(getLocale(Astro.currentLocale));
+---
+
+<button
+  type="button"
+  data-theme-toggle
+  aria-label={copy.toggles.theme}
+  title={copy.toggles.theme}
+  class:list={[
+    "cursor-pointer text-faint transition-colors duration-300 hover:text-accent",
+    className,
+  ]}
+>
+  <Sun class="theme-icon-sun size-5" />
+  <Moon class="theme-icon-moon size-5" />
+</button>
+
+<style is:global>
+  /* The inline head script always sets data-theme; the :not() guard keeps a
+     sane default (dark) if JS is unavailable. */
+  html[data-theme="light"] .theme-icon-sun {
+    display: none;
+  }
+  html:not([data-theme="light"]) .theme-icon-moon {
+    display: none;
+  }
+</style>
+
+<script>
+  import { themeColors } from "@/consts/site";
+
+  const apply = (theme: "light" | "dark", persist = false) => {
+    document.documentElement.dataset.theme = theme;
+    if (persist) localStorage.setItem("theme", theme);
+    document
+      .querySelector('meta[name="theme-color"]')
+      ?.setAttribute("content", themeColors[theme]);
+  };
+
+  // Delegated: survives ClientRouter DOM swaps.
+  document.addEventListener("click", (event) => {
+    const button = (event.target as HTMLElement).closest<HTMLButtonElement>(
+      "[data-theme-toggle]",
+    );
+    if (!button) return;
+    apply(
+      document.documentElement.dataset.theme === "light" ? "dark" : "light",
+      true,
+    );
+  });
+
+  // ClientRouter replaces <html> attributes on navigation — reapply the theme
+  // before the new page paints so it never flashes back to dark.
+  document.addEventListener("astro:after-swap", () => {
+    const stored = localStorage.getItem("theme");
+    const theme =
+      stored === "light" || stored === "dark"
+        ? stored
+        : window.matchMedia("(prefers-color-scheme: light)").matches
+          ? "light"
+          : "dark";
+    apply(theme);
+  });
+</script>

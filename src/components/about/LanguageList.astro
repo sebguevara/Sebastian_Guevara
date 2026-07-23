@@ -1,0 +1,22 @@
+---
+import type { LanguageItem } from "@/lib/cv";
+
+interface Props {
+  items: LanguageItem[];
+}
+
+const { items } = Astro.props;
+---
+
+<div class="card flex flex-col gap-3 p-4 sm:p-5" data-animate="reveal">
+  {
+    items.map((item) => (
+      <div class="flex items-baseline justify-between gap-4">
+        <span class="text-sm font-semibold text-ink">{item.language}</span>
+        <span class="text-right font-mono text-xs text-faint">
+          {item.fluency}
+        </span>
+      </div>
+    ))
+  }
+</div>
