@@ -69,10 +69,14 @@ function buildCv(lang: Locale): Cv {
     highlights: job.highlights
       ? tList(job.highlights as LocalizedString[], lang)
       : undefined,
-    data: ("data" in job ? job.data : undefined)?.map((item) => ({
-      company: item.company,
-      summary: t(item.summary as LocalizedString, lang),
-    })),
+    data: (
+      "data" in job && Array.isArray(job.data) ? job.data : undefined
+    )?.map(
+      (item: { company: string; summary: LocalizedString }) => ({
+        company: item.company,
+        summary: t(item.summary, lang),
+      }),
+    ),
   }));
 
   const education: EducationItem[] = (raw.education ?? []).map((item) => ({
