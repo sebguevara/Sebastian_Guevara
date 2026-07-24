@@ -16,6 +16,8 @@ interface Props {
   sizes?: string;
   /** Load the first slide eagerly (above-the-fold galleries). */
   eagerFirst?: boolean;
+  /** Clicking a slide opens the fullscreen image lightbox. */
+  lightbox?: boolean;
 }
 
 const {
@@ -27,6 +29,7 @@ const {
   widths = [480, 800, 1200],
   sizes = "(min-width: 1024px) 50vw, 100vw",
   eagerFirst = false,
+  lightbox = false,
 } = Astro.props;
 
 const copy = getCopy(getLocale(Astro.currentLocale));
@@ -35,8 +38,9 @@ const multiple = loaders.length > 1;
 ---
 
 <div
-  class:list={["carousel group/carousel relative w-full overflow-hidden", className]}
+  class:list={["carousel group/carousel relative w-full overflow-hidden bg-bg", className]}
   data-carousel
+  data-lightbox-source={lightbox ? "" : undefined}
   transition:name={transitionName}
 >
   <div
@@ -51,15 +55,33 @@ const multiple = loaders.length > 1;
   >
     {
       loaders.map((loader, index) => (
-        <div class="h-full w-full shrink-0 snap-center">
-          <Image
-            alt={`${alt} — ${index + 1}`}
-            src={loader()}
-            widths={widths}
-            sizes={sizes}
-            loading={eagerFirst && index === 0 ? "eager" : "lazy"}
-            class="h-full w-full object-cover object-top"
-          />
+        <div class="carousel-slide relative h-full shrink-0 snap-center overflow-hidden">
+          {lightbox ? (
+            <button
+              type="button"
+              class="lightbox-trigger absolute inset-0 block h-full w-full cursor-zoom-in"
+              data-lightbox-open={String(index)}
+              aria-label={`${copy.lightbox.open} — ${index + 1}`}
+            >
+              <Image
+                alt={`${alt} — ${index + 1}`}
+                src={loader()}
+                widths={widths}
+                sizes={sizes}
+                loading={eagerFirst && index === 0 ? "eager" : "lazy"}
+                class="carousel-image pointer-events-none"
+              />
+            </button>
+          ) : (
+            <Image
+              alt={`${alt} — ${index + 1}`}
+              src={loader()}
+              widths={widths}
+              sizes={sizes}
+              loading={eagerFirst && index === 0 ? "eager" : "lazy"}
+              class="carousel-image"
+            />
+          )}
         </div>
       ))
     }
@@ -106,6 +128,33 @@ const multiple = loaders.length > 1;
 </div>
 
 <style>
+  .lightbox-trigger {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    appearance: none;
+  }
+
+  /* Exact slide width avoids the next slide peeking as a hairline. */
+  .carousel-slide {
+    flex: 0 0 100%;
+    width: 100%;
+    min-width: 100%;
+  }
+
+  /* Absolute cover + tiny scale kills subpixel gaps on the right edge. */
+  .carousel-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    object-fit: cover;
+    object-position: top center;
+    transform: scale(1.02);
+  }
+
   /* Hide the horizontal scrollbar — navigation is swipe/arrows/dots. */
   .carousel-track {
     scrollbar-width: none;

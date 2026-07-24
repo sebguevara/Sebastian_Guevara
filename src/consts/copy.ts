@@ -12,6 +12,7 @@ type Copy = {
     experience: string;
     projects: string;
     education: string;
+    skills: string;
     about: string;
   };
   hero: {
@@ -26,11 +27,11 @@ type Copy = {
     experience: { eyebrow: string; title: string };
     projects: { eyebrow: string; title: string };
     education: { eyebrow: string; title: string };
+    skills: { eyebrow: string; title: string };
     about: { eyebrow: string; title: string };
     contact: { eyebrow: string; title: string };
   };
   about: {
-    skills: string;
     languages: string;
     interests: string;
   };
@@ -50,12 +51,20 @@ type Copy = {
     next: string;
     goTo: string;
   };
+  lightbox: {
+    label: string;
+    open: string;
+    close: string;
+  };
   education: {
     average: string;
   };
   contact: {
     body: string;
     cta: string;
+    copyEmail: string;
+    copied: string;
+    linkedin: string;
   };
   footer: {
     rights: string;
@@ -72,6 +81,7 @@ type Copy = {
   };
   experience: {
     present: string;
+    company: string;
   };
 };
 
@@ -80,7 +90,7 @@ const copyByLocale: Record<Locale, Copy> = {
     meta: {
       title: "Sebastian Guevara — Full Stack Developer",
       description:
-        "Full Stack Developer with 5+ years building production systems. Team Lead at the city government of Corrientes and co-founder of two SaaS products. TypeScript, Node.js, PostgreSQL, Redis, and applied AI.",
+        "Sebastian Guevara — Full Stack Developer with 5+ years building production web apps, APIs, and backend services. Next.js, React, Node.js, TypeScript, PostgreSQL, Redis, and applied AI. Based in Corrientes, Argentina.",
       notFoundTitle: "Page not found",
     },
     nav: {
@@ -89,6 +99,7 @@ const copyByLocale: Record<Locale, Copy> = {
       experience: "Experience",
       projects: "Projects",
       education: "Education",
+      skills: "Skills",
       about: "About",
     },
     hero: {
@@ -103,11 +114,11 @@ const copyByLocale: Record<Locale, Copy> = {
       experience: { eyebrow: "Experience", title: "Where I've worked" },
       projects: { eyebrow: "Projects", title: "Featured projects" },
       education: { eyebrow: "Education", title: "Where I've studied" },
+      skills: { eyebrow: "Skills", title: "What I work with" },
       about: { eyebrow: "About", title: "A bit about me" },
       contact: { eyebrow: "Contact", title: "Let's build something together" },
     },
     about: {
-      skills: "Skills",
       languages: "Languages",
       interests: "Interests",
     },
@@ -127,12 +138,20 @@ const copyByLocale: Record<Locale, Copy> = {
       next: "Next image",
       goTo: "Go to image",
     },
+    lightbox: {
+      label: "Image viewer",
+      open: "View image",
+      close: "Close",
+    },
     education: {
       average: "Average",
     },
     contact: {
       body: "I'm open to new projects, remote roles, and collaborations. Tell me what you need and I'll get back to you soon.",
       cta: "Send me an email",
+      copyEmail: "Copy email",
+      copied: "Copied!",
+      linkedin: "Connect on LinkedIn",
     },
     footer: {
       rights: "All rights reserved.",
@@ -149,13 +168,14 @@ const copyByLocale: Record<Locale, Copy> = {
     },
     experience: {
       present: "Present",
+      company: "The company",
     },
   },
   es: {
     meta: {
       title: "Sebastian Guevara — Full Stack Developer",
       description:
-        "Full Stack Developer con 5+ años construyendo sistemas en producción. Team Lead en la Municipalidad de Corrientes y cofundador de dos productos SaaS. TypeScript, Node.js, PostgreSQL, Redis e IA aplicada.",
+        "Sebastian Guevara — Desarrollador Full Stack con más de 5 años construyendo aplicaciones web, APIs y servicios backend en producción. Next.js, React, Node.js, TypeScript, PostgreSQL, Redis e IA aplicada. Corrientes, Argentina.",
       notFoundTitle: "Página no encontrada",
     },
     nav: {
@@ -164,6 +184,7 @@ const copyByLocale: Record<Locale, Copy> = {
       experience: "Experiencia",
       projects: "Proyectos",
       education: "Educación",
+      skills: "Skills",
       about: "Sobre mí",
     },
     hero: {
@@ -178,11 +199,11 @@ const copyByLocale: Record<Locale, Copy> = {
       experience: { eyebrow: "Experiencia", title: "Dónde trabajé" },
       projects: { eyebrow: "Proyectos", title: "Proyectos destacados" },
       education: { eyebrow: "Educación", title: "Dónde estudié" },
+      skills: { eyebrow: "Skills", title: "Con qué trabajo" },
       about: { eyebrow: "Sobre mí", title: "Un poco sobre mí" },
       contact: { eyebrow: "Contacto", title: "¿Construimos algo juntos?" },
     },
     about: {
-      skills: "Habilidades",
       languages: "Idiomas",
       interests: "Intereses",
     },
@@ -202,12 +223,20 @@ const copyByLocale: Record<Locale, Copy> = {
       next: "Imagen siguiente",
       goTo: "Ir a la imagen",
     },
+    lightbox: {
+      label: "Visor de imágenes",
+      open: "Ver imagen",
+      close: "Cerrar",
+    },
     education: {
       average: "Promedio",
     },
     contact: {
       body: "Estoy abierto a nuevos proyectos, roles remotos y colaboraciones. Contame qué necesitás y te respondo a la brevedad.",
       cta: "Escribime un email",
+      copyEmail: "Copiar email",
+      copied: "¡Copiado!",
+      linkedin: "Conectar en LinkedIn",
     },
     footer: {
       rights: "Todos los derechos reservados.",
@@ -224,6 +253,7 @@ const copyByLocale: Record<Locale, Copy> = {
     },
     experience: {
       present: "Actualidad",
+      company: "La empresa",
     },
   },
 };

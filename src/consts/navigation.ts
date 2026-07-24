@@ -21,6 +21,7 @@ const navBase = [
   { key: "experience", label: "experience", hash: "#experience", icon: "Briefcase" },
   { key: "projects", label: "projects", hash: "#projects", icon: "FileCode" },
   { key: "education", label: "education", hash: "#education", icon: "School" },
+  { key: "skills", label: "skills", hash: "#skills", icon: "Skill" },
   { key: "about", label: "about", hash: "#about", icon: "About" },
 ] as const;
 

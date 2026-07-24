@@ -2,7 +2,6 @@
 import InterestCard from "@/components/about/InterestCard.astro";
 import LanguageList from "@/components/about/LanguageList.astro";
 import ProfilePhoto from "@/components/about/ProfilePhoto.astro";
-import SkillCard from "@/components/about/SkillCard.astro";
 import SectionHeader from "@/components/ui/SectionHeader.astro";
 import { getCopy } from "@/consts/copy";
 import { getLocale } from "@/consts/locale";
@@ -10,7 +9,7 @@ import { getCv } from "@/lib/cv";
 
 const locale = getLocale(Astro.currentLocale);
 const copy = getCopy(locale);
-const { basics, skills, languages, interests } = getCv(locale);
+const { basics, languages, interests } = getCv(locale);
 
 const paragraphs =
   basics.about.length > 0 ? basics.about : [basics.summary];
@@ -34,18 +33,6 @@ const paragraphs =
     </div>
 
     <ProfilePhoto />
-  </div>
-
-  <div class="mt-12 sm:mt-16">
-    <h3
-      class="mb-4 font-mono text-xs uppercase tracking-[0.2em] text-faint"
-      data-animate="reveal"
-    >
-      {copy.about.skills}
-    </h3>
-    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-      {skills.map((skill) => <SkillCard {...skill} />)}
-    </div>
   </div>
 
   <div class="mt-12 grid gap-10 sm:mt-16 lg:grid-cols-[1fr_2.2fr] lg:gap-8">

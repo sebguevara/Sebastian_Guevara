@@ -4,8 +4,8 @@ import sitemap from "@astrojs/sitemap";
 
 import react from "@astrojs/react";
 
-// TODO: replace with the final custom domain when purchased.
-const SITE = "https://sebguevara.github.io";
+// Primary portfolio domain (also listed on the CV).
+const SITE = "https://sebguevara.site";
 
 // https://astro.build/config
 export default defineConfig({

@@ -2,12 +2,12 @@
   "basics": {
     "name": "Sebastian Guevara",
     "label": {
-      "en": "Full Stack Developer | 5+ years building production systems",
-      "es": "Full Stack Developer | 5+ años construyendo sistemas en producción"
+      "en": "Full Stack Developer",
+      "es": "Desarrollador Full Stack"
     },
     "tagline": {
       "en": "Full Stack Developer with 5+ years of experience building production web applications, APIs, and backend services. Core stack: Next.js, React, Node.js, Express.js, TypeScript, PostgreSQL, and Redis. Experienced with REST/GraphQL APIs, external integrations, asynchronous processing, data ingestion, testing, and deployments with Linux, Docker, and cloud platforms. I work autonomously end to end and use Claude Code, Codex, and MCPs to accelerate development, documentation, debugging, and testing while validating results.",
-      "es": "Full Stack Developer con más de 5 años de experiencia construyendo aplicaciones web en producción, APIs y servicios backend. Stack principal: Next.js, React, Node.js, Express.js, TypeScript, PostgreSQL y Redis. Experiencia con APIs REST/GraphQL, integraciones externas, procesamiento asíncrono, ingesta de datos, testing y despliegues con Linux, Docker y plataformas cloud. Trabajo de forma autónoma de punta a punta y uso Claude Code, Codex y MCPs para acelerar desarrollo, documentación, debugging y testing, validando cada resultado."
+      "es": "Desarrollador Full Stack con más de 5 años de experiencia construyendo aplicaciones web, APIs y servicios backend en producción. Stack principal: Next.js, React, Node.js, Express.js, TypeScript, PostgreSQL y Redis. Experiencia en APIs REST y GraphQL, integraciones externas, procesamiento asíncrono, ingesta de datos, testing y despliegues con Linux, Docker y cloud. Trabajo con autonomía end-to-end y uso Claude Code, Codex y MCP para acelerar desarrollo, documentación, depuración y pruebas, validando siempre los resultados."
     },
     "image": "/src/assets/profile/me.webp",
     "email": "jseb.guevara@gmail.com",
@@ -15,24 +15,20 @@
     "url": null,
     "summary": {
       "en": "Full Stack Developer with 5+ years of experience building production web applications, APIs, and backend services. Core stack: Next.js, React, Node.js, Express.js, TypeScript, PostgreSQL, and Redis. Experienced with REST/GraphQL APIs, external integrations, asynchronous processing, data ingestion, testing, and deployments with Linux, Docker, and cloud platforms. I work autonomously end to end and use Claude Code, Codex, and MCPs to accelerate development, documentation, debugging, and testing while validating results.",
-      "es": "Full Stack Developer con más de 5 años de experiencia construyendo aplicaciones web en producción, APIs y servicios backend. Stack principal: Next.js, React, Node.js, Express.js, TypeScript, PostgreSQL y Redis. Experiencia con APIs REST/GraphQL, integraciones externas, procesamiento asíncrono, ingesta de datos, testing y despliegues con Linux, Docker y plataformas cloud. Trabajo de forma autónoma de punta a punta y uso Claude Code, Codex y MCPs para acelerar desarrollo, documentación, debugging y testing, validando cada resultado."
+      "es": "Desarrollador Full Stack con más de 5 años de experiencia construyendo aplicaciones web, APIs y servicios backend en producción. Stack principal: Next.js, React, Node.js, Express.js, TypeScript, PostgreSQL y Redis. Experiencia en APIs REST y GraphQL, integraciones externas, procesamiento asíncrono, ingesta de datos, testing y despliegues con Linux, Docker y cloud. Trabajo con autonomía end-to-end y uso Claude Code, Codex y MCP para acelerar desarrollo, documentación, depuración y pruebas, validando siempre los resultados."
     },
     "about": [
       {
-        "en": "I'm Sebastian, a Colombian developer based in Corrientes, Argentina. I started in backend, building ERP and fleet logistics systems with .NET and SQL Server, then moved to full stack consulting on production platforms for enterprise clients. Today I lead the development team at the city government of Corrientes, where we build and operate high-availability systems for a city of 400,000 people — including the automation of the driver's license renewal process, which cut operational workload by 70%.",
-        "es": "Soy Sebastian, desarrollador colombiano radicado en Corrientes, Argentina. Arranqué en backend construyendo sistemas ERP y de logística de flotas con .NET y SQL Server, seguí como full stack en consultoría sobre plataformas en producción para clientes enterprise, y hoy lidero el equipo de desarrollo de la Municipalidad de Corrientes, donde construimos y operamos sistemas de alta disponibilidad para una ciudad de 400.000 habitantes — incluida la automatización del proceso de renovación de licencias de conducir, que redujo la carga operativa un 70%."
+        "en": "I'm Sebastian Guevara, 25 years old. I'm Colombian and I live in Argentina. I studied Information Systems — I finished all my coursework and only have my thesis left to submit. I've been working in IT for 5 years, building different kinds of projects along the way: from backend systems to full stack products that go to production.",
+        "es": "Soy Sebastian Guevara, tengo 25 años. Soy colombiano y vivo en Argentina. Estudié Sistemas de Información: terminé las materias y solo me queda presentar la tesis. Llevo 5 años trabajando en IT y a lo largo de ese camino desarrollé proyectos de distinto tipo: desde sistemas backend hasta productos full stack que llegan a producción."
       },
       {
-        "en": "Outside my job I build my own products. I co-founded Quadro, a multi-tenant SaaS for padel tournament management with payments, constraint-based fixture generation, and WhatsApp notifications, and Minuto 90 Score, a real-time sports results platform that ingests and normalizes live feeds from external providers under high traffic. I also run SMA, a social media analytics platform that has been in production for clients since 2024. In all of them I own the whole system: backend, frontend, UX, and the infrastructure it runs on.",
-        "es": "Fuera de mi trabajo construyo mis propios productos. Cofundé Quadro, un SaaS multi-tenant para gestión de torneos de pádel con pagos, generación de fixtures con restricciones y notificaciones por WhatsApp, y Minuto 90 Score, una plataforma de resultados deportivos en tiempo real que ingiere y normaliza feeds en vivo de proveedores externos bajo alto tráfico. También mantengo SMA, una plataforma de analítica de redes sociales que está en producción para clientes desde 2024. En todos soy responsable del sistema completo: backend, frontend, UX y la infraestructura donde corre."
+        "en": "I consider myself self-taught. Even with a full-time job, I keep side projects going — creating new things, putting myself in unfamiliar problems, and learning from other people. That rhythm of building, breaking, and improving is how I grow.",
+        "es": "Me considero una persona autodidacta. Aunque tenga un trabajo formal, me gusta mantener side projects: crear cosas nuevas, meterme en desafíos que no conozco y aprender de otras personas. Ese ritmo de construir, romper y mejorar es como crezco."
       },
       {
-        "en": "My core stack is TypeScript, React, Next.js, and Node.js (Express, NestJS, Bun, Elysia) with PostgreSQL and Redis, plus solid experience in Python, .NET/C#, and PHP from previous roles. I work heavily with applied AI: RAG pipelines, embeddings, vector databases, and an agentic development workflow with Claude Code, Codex, and MCP that I use daily to build faster — always reviewing and validating what the tools produce.",
-        "es": "Mi stack principal es TypeScript, React, Next.js y Node.js (Express, NestJS, Bun, Elysia) con PostgreSQL y Redis, más experiencia sólida en Python, .NET/C# y PHP de roles anteriores. Trabajo mucho con IA aplicada: pipelines de RAG, embeddings, bases de datos vectoriales y un flujo de desarrollo agéntico con Claude Code, Codex y MCP que uso a diario para construir más rápido, siempre revisando y validando lo que las herramientas producen."
-      },
-      {
-        "en": "I work in English (B2) and Spanish (native), I'm used to remote and agile teams, and what you can expect from me is simple: clear communication, technical ownership, and software that reaches production and stays working.",
-        "es": "Trabajo en inglés (B2) y español (nativo), estoy acostumbrado a equipos remotos y ágiles, y lo que podés esperar de mí es simple: comunicación clara, ownership técnico y software que llega a producción y se mantiene funcionando."
+        "en": "I'm solution-oriented, empathetic, and proactive. What I care about is understanding the problem, communicating clearly, and shipping something that actually works — not just writing code for the sake of it.",
+        "es": "Me considero orientado a soluciones, empático y proactivo. Me importa entender el problema, comunicar con claridad y entregar algo que realmente funcione — no escribir código por escribir."
       }
     ],
     "location": {
@@ -75,34 +71,26 @@
       },
       "position": {
         "en": "Team Lead - Full Stack Developer",
-        "es": "Team Lead - Desarrollador Full Stack"
+        "es": "Líder de equipo - Desarrollador Full Stack"
       },
       "startDate": "2024-02",
       "endDate": null,
       "summary": {
-        "en": "The city government of Corrientes serves a city of roughly 400,000 people, and its digital services need to stay up: citizen-facing portals, internal administrative systems, and procedures that used to require standing in line. I lead the development team that designs, builds, and operates these systems.",
-        "es": "La Municipalidad de Corrientes da servicio a una ciudad de aproximadamente 400.000 habitantes, y sus servicios digitales tienen que estar siempre disponibles: portales para el ciudadano, sistemas administrativos internos y trámites que antes exigían hacer fila. Lidero el equipo de desarrollo que diseña, construye y opera estos sistemas."
+        "en": "Team Lead - Full Stack Developer at the Corrientes city government.",
+        "es": "Líder de equipo - Desarrollador Full Stack en la Municipalidad de Corrientes."
       },
       "highlights": [
         {
           "en": "Designed and maintained services and APIs for high-availability municipal systems using Express, PostgreSQL, Redis, Next.js, and React Native.",
-          "es": "Diseñé y mantuve servicios y APIs para sistemas municipales de alta disponibilidad con Express, PostgreSQL, Redis, Next.js y React Native."
+          "es": "Diseñé y mantuve servicios y APIs para sistemas municipales de alta disponibilidad, trabajando con Express, PostgreSQL, Redis, Next.js y React Native."
         },
         {
-          "en": "Automated the driver's license renewal process end to end, reducing operational workload by 70% and cutting the time citizens spend on the procedure.",
-          "es": "Automaticé de punta a punta el proceso de renovación de licencias de conducir, reduciendo la carga operativa en un 70% y el tiempo que los ciudadanos dedican al trámite."
+          "en": "Automated the license renewal process, reducing operational workload by 70%.",
+          "es": "Automaticé el proceso de renovación de licencias, reduciendo la carga operativa en un 70%."
         },
         {
-          "en": "Built citizen-facing and internal tools spanning web (Next.js) and mobile (React Native), backed by PostgreSQL and Redis for caching and queues.",
-          "es": "Construí herramientas internas y de cara al ciudadano en web (Next.js) y mobile (React Native), respaldadas por PostgreSQL y Redis para caché y colas."
-        },
-        {
-          "en": "Lead prioritization, code reviews, and production deployments; coordinate the team's execution and act as technical reference for architectural decisions.",
-          "es": "Lidero la priorización, los code reviews y los despliegues a producción; coordino la ejecución del equipo y soy referente técnico en decisiones de arquitectura."
-        },
-        {
-          "en": "Introduced agentic AI tooling (Claude Code, MCP) into the team's workflow for code generation, refactoring, and documentation, with human validation before anything ships.",
-          "es": "Introduje tooling de IA agéntica (Claude Code, MCP) en el flujo del equipo para generación de código, refactorización y documentación, con validación humana antes de cada entrega."
+          "en": "Led prioritization, code reviews, and production deployments while coordinating team execution.",
+          "es": "Lideré prioridades, revisiones de código y despliegues a producción, coordinando el trabajo del equipo."
         }
       ]
     },
@@ -110,58 +98,31 @@
       "company": "Dinatech",
       "url": "https://dinatech.com.ar/",
       "location": {
-        "en": "Buenos Aires, Argentina (Remote)",
-        "es": "Buenos Aires, Argentina (Remoto)"
+        "en": "Remote",
+        "es": "Remoto"
       },
       "position": {
         "en": "Full Stack Developer",
         "es": "Desarrollador Full Stack"
       },
       "startDate": "2022-10",
-      "endDate": "2024-12",
+      "endDate": "2023-12",
       "summary": {
-        "en": "Dinatech is an Argentine technology group with 20+ years in the market, 300+ employees, and ISO 9001/14001/27001/37001 certifications, serving government, industry, oil & gas, and financial services clients across the country. I worked as a full stack developer on production web platforms for its clients, within agile remote teams.",
-        "es": "Dinatech es un grupo tecnológico argentino con más de 20 años en el mercado, más de 300 empleados y certificaciones ISO 9001/14001/27001/37001, que atiende clientes de gobierno, industria, oil & gas y servicios financieros en todo el país. Trabajé como desarrollador full stack en plataformas web en producción para sus clientes, dentro de equipos ágiles remotos."
+        "en": "Full Stack Developer building production web applications and API integrations.",
+        "es": "Desarrollador Full Stack implementando aplicaciones web en producción e integraciones de APIs."
       },
       "highlights": [
         {
-          "en": "Implemented API features and integrations with React, PHP, Redis, and PostgreSQL across production web applications for enterprise clients.",
-          "es": "Implementé funcionalidades de API e integraciones con React, PHP, Redis y PostgreSQL en aplicaciones web en producción para clientes enterprise."
+          "en": "Implemented API features and integrations with React, PHP, Redis, and PostgreSQL across production web applications.",
+          "es": "Implementé funcionalidades e integraciones de APIs con React, PHP, Redis y PostgreSQL."
         },
         {
-          "en": "Refactored an agricultural platform, improving load times by up to 60% through query optimization, caching, and code restructuring.",
-          "es": "Refactoricé una plataforma agrícola, mejorando los tiempos de carga hasta un 60% mediante optimización de queries, caché y reestructuración de código."
+          "en": "Maintained and improved web applications within agile, remote teams.",
+          "es": "Mantuve y mejoré aplicaciones web en producción dentro de equipos ágiles."
         },
         {
-          "en": "Maintained and evolved systems in production: iterative delivery, bug triage, and production support in coordination with client teams.",
-          "es": "Mantuve y evolucioné sistemas en producción: entrega iterativa, triage de bugs y soporte productivo en coordinación con los equipos del cliente."
-        },
-        {
-          "en": "Participated in analysis and design sessions, translating client requirements into technical solutions.",
-          "es": "Participé en sesiones de análisis y diseño, traduciendo requerimientos del cliente en soluciones técnicas."
-        }
-      ],
-      "data": [
-        {
-          "company": "Ground Engineering",
-          "summary": {
-            "en": "Resource optimization project: enhanced existing processes and developed technical solutions to ensure quicker and more effective access to critical engineering information.",
-            "es": "Proyecto de optimización de recursos: mejoré procesos existentes y desarrollé soluciones técnicas para garantizar un acceso más rápido y efectivo a información crítica de ingeniería."
-          }
-        },
-        {
-          "company": "DayFlow",
-          "summary": {
-            "en": "Participated from the initial phase in the analysis and design of the system's functionalities, building the product from the ground up: conception of key features and their implementation.",
-            "es": "Participé desde la fase inicial en el análisis y diseño de las funcionalidades del sistema, construyendo el producto desde cero: concepción de features clave y su implementación."
-          }
-        },
-        {
-          "company": "Logistica EB",
-          "summary": {
-            "en": "Added new functionalities to a logistics system and improved its efficiency and performance through detailed analysis and code refactoring.",
-            "es": "Agregué nuevas funcionalidades a un sistema de logística y mejoré su eficiencia y rendimiento mediante análisis detallado y refactorización de código."
-          }
+          "en": "Refactored an agricultural platform, improving load times by up to 60%.",
+          "es": "Refactoricé una plataforma agrícola, mejorando los tiempos de carga hasta un 60%."
         }
       ]
     },
@@ -169,8 +130,8 @@
       "company": "Yugoo",
       "url": "https://www.yugoo.com.ar/",
       "location": {
-        "en": "Corrientes, Argentina (Hybrid)",
-        "es": "Corrientes, Argentina (Híbrido)"
+        "en": "Remote",
+        "es": "Remoto"
       },
       "position": {
         "en": "Backend Developer",
@@ -179,29 +140,17 @@
       "startDate": "2021-08",
       "endDate": "2022-10",
       "summary": {
-        "en": "Yugoo is a Corrientes-based software company (since 2007, 800+ projects, 1,700+ active users) that builds its own enterprise platforms: Yugoo ERP (multi-company, multi-branch management covering sales, purchasing, stock, receivables, accounting, and invoicing), SIUT (real-time fleet logistics with GPS tracking for 700+ vehicles), and business apps and self-service portals. I worked as a backend developer across these product lines.",
-        "es": "Yugoo es una empresa de software de Corrientes (desde 2007, más de 800 proyectos y 1.700 usuarios activos) que construye sus propias plataformas empresariales: Yugoo ERP (gestión multiempresa y multisucursal de ventas, compras, stock, cobranzas, contabilidad y facturación), SIUT (logística de flotas en tiempo real con rastreo GPS de más de 700 vehículos), además de apps de negocio y portales de autogestión. Trabajé como desarrollador backend en estas líneas de producto."
+        "en": "Backend Developer building services with .NET, C#, and SQL Server.",
+        "es": "Desarrollador Backend construyendo servicios con .NET, C# y SQL Server."
       },
       "highlights": [
         {
-          "en": "Developed backend features and services with .NET, C#, and SQL Server for ERP modules used daily by companies in distribution, retail, health, and logistics.",
-          "es": "Desarrollé funcionalidades y servicios backend con .NET, C# y SQL Server para módulos del ERP usados a diario por empresas de distribución, retail, salud y logística."
+          "en": "Developed backend features and services with .NET, C#, and SQL Server, focusing on performance and scalability.",
+          "es": "Desarrollé funcionalidades backend y servicios con .NET, C# y SQL Server, con foco en rendimiento y escalabilidad."
         },
         {
-          "en": "Contributed to SIUT, Yugoo's real-time fleet logistics platform: services supporting GPS tracking, route sheets, and delivery management.",
-          "es": "Contribuí a SIUT, la plataforma de logística de flotas en tiempo real de Yugoo: servicios de rastreo GPS, hojas de ruta y gestión de entregas."
-        },
-        {
-          "en": "Built and evolved REST APIs consumed by Angular frontends, mobile apps, and self-service portals for clients, vendors, and drivers.",
-          "es": "Construí y evolucioné APIs REST consumidas por frontends en Angular, apps móviles y portales de autogestión para clientes, proveedores y choferes."
-        },
-        {
-          "en": "Worked on service integrations and API evolution with a focus on performance, scalability, and maintainable code in multi-tenant, multi-branch scenarios.",
-          "es": "Trabajé en integraciones de servicios y evolución de APIs con foco en rendimiento, escalabilidad y código mantenible en escenarios multi-tenant y multisucursal."
-        },
-        {
-          "en": "Operated in a Linux-based production environment (the company manages 50+ Linux servers), gaining early experience in how software behaves in real production.",
-          "es": "Operé en un entorno productivo basado en Linux (la empresa administra más de 50 servidores Linux), ganando experiencia temprana en cómo se comporta el software en producción real."
+          "en": "Contributed to service integrations and API evolution for web products with an Angular frontend.",
+          "es": "Participé en la integración de servicios y evolución de APIs para productos web con frontend en Angular."
         }
       ]
     }
@@ -226,7 +175,7 @@
       "score": null,
       "note": {
         "en": "Thesis submission pending",
-        "es": "Tesis pendiente de presentación"
+        "es": "Presentación de tesis pendiente"
       }
     },
     {
@@ -244,31 +193,56 @@
         "es": "Tecnicatura Universitaria"
       },
       "startDate": "2021-01",
-      "endDate": "2023-11",
-      "score": "8.6"
-    },
-    {
-      "institution": {
-        "en": "Colombo American English",
-        "es": "Colombo Americano"
-      },
-      "url": "https://www.colomboamericano.edu.co/",
-      "area": {
-        "en": "English B2",
-        "es": "Inglés B2"
-      },
-      "studyType": {
-        "en": "Course",
-        "es": "Curso"
-      },
-      "startDate": "2018-07",
-      "endDate": "2019-03",
+      "endDate": "2023-12",
       "score": null
     }
   ],
   "skills": [
     {
-      "name": "Frontend",
+      "name": {
+        "en": "Backend and integrations",
+        "es": "Backend e integraciones"
+      },
+      "level": "advanced",
+      "keywords": [
+        "Node.js",
+        "Express.js",
+        "NestJS",
+        "RESTful APIs",
+        "GraphQL",
+        "Python",
+        ".NET",
+        "C#",
+        "Bun",
+        "Elysia",
+        "External API consumption",
+        "Protobuf"
+      ]
+    },
+    {
+      "name": {
+        "en": "Data and processes",
+        "es": "Datos y procesos"
+      },
+      "level": "advanced",
+      "keywords": [
+        "PostgreSQL",
+        "SQL Server",
+        "MongoDB",
+        "Redis",
+        "BullMQ",
+        "H5/HDF5",
+        "Prisma",
+        "Data ingestion",
+        "Normalization",
+        "Asynchronous processing"
+      ]
+    },
+    {
+      "name": {
+        "en": "Frontend",
+        "es": "Frontend"
+      },
       "level": "advanced",
       "keywords": [
         "React",
@@ -277,97 +251,56 @@
         "Svelte/SvelteKit",
         "Vue",
         "Angular",
-        "React Native",
-        "Tailwind CSS",
-        "Zustand"
+        "React Native"
       ]
     },
     {
-      "name": "Node.js & APIs",
+      "name": {
+        "en": "Infrastructure and delivery",
+        "es": "Infraestructura y entrega"
+      },
       "level": "advanced",
       "keywords": [
-        "Express.js",
-        "NestJS",
-        "Bun",
-        "Elysia",
-        "REST APIs",
-        "GraphQL",
-        "WebSockets",
-        "Webhooks",
-        "External API integrations"
+        "Linux",
+        "Docker",
+        "Self-managed VPS deployments",
+        "AWS",
+        "Google Cloud Platform",
+        "Git/GitHub",
+        "GitHub Actions",
+        "Agile methodologies"
       ]
     },
     {
-      "name": "Python",
+      "name": {
+        "en": "Testing and quality",
+        "es": "Testing y calidad"
+      },
       "level": "advanced",
       "keywords": [
-        "Backend modules",
-        "Data processing",
-        "H5/HDF5",
-        "Automation",
-        "Satellite data pipelines"
+        "Unit testing",
+        "Integration testing",
+        "End-to-end testing (E2E)",
+        "Playwright",
+        "Test automation"
       ]
     },
     {
-      "name": ".NET & PHP",
-      "level": "advanced",
-      "keywords": [
-        "C#",
-        "ASP.NET",
-        "Web API",
-        "PHP",
-        "Enterprise systems"
-      ]
-    },
-    {
-      "name": "SQL Databases",
-      "level": "advanced",
-      "keywords": [
-        "PostgreSQL",
-        "SQL Server",
-        "MySQL",
-        "Prisma",
-        "Query optimization"
-      ]
-    },
-    {
-      "name": "NoSQL, Caching & Queues",
-      "level": "advanced",
-      "keywords": [
-        "Redis",
-        "MongoDB",
-        "BullMQ (Redis-based queues)",
-        "Vector databases",
-        "Asynchronous processing"
-      ]
-    },
-    {
-      "name": "AI & Agentic Tooling",
+      "name": {
+        "en": "AI and tooling",
+        "es": "IA y tooling"
+      },
       "level": "advanced",
       "keywords": [
         "Claude Code",
         "Codex",
         "MCP",
-        "LLM APIs",
+        "LangChain",
+        "LangGraph",
+        "Language model APIs",
         "RAG",
-        "Embeddings",
-        "Semantic search",
-        "Prompt engineering",
-        "Structured outputs"
-      ]
-    },
-    {
-      "name": "Infrastructure & Delivery",
-      "level": "advanced",
-      "keywords": [
-        "Docker",
-        "AWS",
-        "Google Cloud Platform",
-        "Linux",
-        "Self-managed VPS",
-        "GitHub Actions",
-        "Git",
-        "CI/CD"
+        "Vector databases",
+        "Prompt engineering"
       ]
     }
   ],
@@ -440,8 +373,8 @@
       "isActive": true,
       "featured": true,
       "category": {
-        "en": "Co-founder",
-        "es": "Cofundador"
+        "en": "Co-founder and Full Stack Developer",
+        "es": "Co-fundador y desarrollador Full Stack"
       },
       "startDate": "2026-05",
       "endDate": null,
@@ -453,21 +386,17 @@
       ],
       "details": [
         {
-          "en": "The hardest problem is fixture generation: turning a pile of registrations into a valid schedule that respects available courts, time slots, and category restrictions — automatically, for every tournament format an organizer throws at it.",
-          "es": "El problema más difícil es la generación de fixtures: convertir una pila de inscripciones en un cronograma válido que respete canchas disponibles, franjas horarias y restricciones de categoría — automáticamente, para cualquier formato de torneo que el organizador proponga."
+          "en": "Multi-tenant SaaS for padel tournament management built with Next.js, Express.js, PostgreSQL, Redis, and Python modules: online registration, payment flows, fixture generation, CRM, and WhatsApp notifications.",
+          "es": "SaaS multiusuario para gestión de torneos de pádel construido con Next.js, Express.js, PostgreSQL, Redis y módulos en Python: inscripciones online, flujos de pago, generación de fixtures, CRM y notificaciones por WhatsApp."
         },
         {
-          "en": "Every organizer operates as an isolated tenant on shared infrastructure: their own branded white-label pages, their own player CRM, their own payment flows and WhatsApp notifications — without ever seeing another tenant's data.",
-          "es": "Cada organizador opera como un tenant aislado sobre infraestructura compartida: sus páginas white-label con su marca, su propio CRM de jugadores, sus flujos de pago y notificaciones de WhatsApp — sin ver jamás los datos de otro tenant."
-        },
-        {
-          "en": "There is no team behind this one: backend (Express + PostgreSQL + Redis), frontend (Next.js), UX, Python services, and the self-managed VPS are all mine, from provisioning to deploys. It's the project where I make every architectural call — and live with the consequences.",
-          "es": "Acá no hay un equipo detrás: el backend (Express + PostgreSQL + Redis), el frontend (Next.js), la UX, los servicios en Python y el VPS autogestionado son todos míos, desde el provisioning hasta los deploys. Es el proyecto donde tomo cada decisión de arquitectura — y convivo con las consecuencias."
+          "en": "Owned backend, frontend, UX, and infrastructure on a self-managed VPS, taking the product from decisions to end-to-end delivery.",
+          "es": "Responsable del backend, frontend, UX e infraestructura en una VPS propia de punta a punta."
         }
       ],
       "description": {
-        "en": "Multi-tenant SaaS for padel tournament management that I co-founded and built end to end. Organizers get online registrations, payment flows, constraint-based fixture generation (courts, schedules, category restrictions), a CRM for players, automated WhatsApp notifications, and white-label public pages under their own brand. I own the full lifecycle: backend, frontend, UX, and the self-managed VPS infrastructure it runs on — from ambiguous requirements to production.",
-        "es": "SaaS multi-tenant para la gestión de torneos de pádel que cofundé y construí de punta a punta. Los organizadores tienen inscripciones online, flujos de pago, generación de fixtures con restricciones (canchas, horarios, categorías), un CRM de jugadores, notificaciones automáticas por WhatsApp y páginas públicas white-label con su propia marca. Soy responsable del ciclo completo: backend, frontend, UX y la infraestructura en un VPS autogestionado donde corre — desde requerimientos ambiguos hasta producción."
+        "en": "Multi-tenant SaaS for padel tournament management that I co-founded and built end to end. Online registrations, payment flows, fixture generation, CRM, and WhatsApp notifications — with full ownership of backend, frontend, UX, and self-managed VPS infrastructure.",
+        "es": "SaaS multiusuario para gestión de torneos de pádel que cofundé y construí de punta a punta. Inscripciones online, flujos de pago, generación de fixtures, CRM y notificaciones por WhatsApp — con ownership completo de backend, frontend, UX e infraestructura en VPS propia."
       },
       "highlights": [
         "SaaS",
@@ -483,7 +412,10 @@
         "Express.js",
         "PostgreSQL",
         "Redis",
-        "Python"
+        "Python",
+        "OpenAI",
+        "TypeScript",
+        "Meta"
       ],
       "url": "https://usequadro.com",
       "github": null
@@ -494,8 +426,8 @@
       "isActive": true,
       "featured": true,
       "category": {
-        "en": "Co-founder",
-        "es": "Cofundador"
+        "en": "Co-founder and Full Stack Developer",
+        "es": "Co-fundador y desarrollador Full Stack"
       },
       "startDate": "2025-10",
       "endDate": null,
@@ -507,21 +439,13 @@
       ],
       "details": [
         {
-          "en": "External providers deliver live feeds in different formats and with different reliability. The ingestion layer normalizes everything into one consistent model and persists it, so a provider hiccup never corrupts what users see mid-match.",
-          "es": "Los proveedores externos entregan feeds en vivo con formatos y confiabilidad distintos. La capa de ingesta normaliza todo a un modelo consistente y lo persiste, así un fallo del proveedor nunca corrompe lo que los usuarios ven en pleno partido."
-        },
-        {
-          "en": "The heavy processing runs on asynchronous workers, off the request path — during peak minutes (goals, match endings) the site keeps serving fast while the queue absorbs the spike. Bun + Elysia on the backend, PostgreSQL and Redis for persistence, caching, and queues.",
-          "es": "El procesamiento pesado corre en workers asíncronos, fuera del request path — en los minutos pico (goles, finales de partido) el sitio sigue respondiendo rápido mientras la cola absorbe el spike. Bun + Elysia en el backend, PostgreSQL y Redis para persistencia, caché y colas."
-        },
-        {
-          "en": "The public side is a SvelteKit site designed around SEO: live scores, fixtures, and match detail pages structured to rank on search and to load fast under high traffic.",
-          "es": "La cara pública es un sitio en SvelteKit diseñado alrededor del SEO: resultados en vivo, fixtures y páginas de detalle de partido estructuradas para posicionar en buscadores y cargar rápido bajo alto tráfico."
+          "en": "Real-time sports results platform with ingestion, normalization, and persistence of external provider feeds, asynchronous processing, and high-traffic public pages.",
+          "es": "Plataforma de resultados deportivos en tiempo real con ingesta, normalización y persistencia de feeds de proveedores externos, procesos de procesamiento y páginas públicas de alto tráfico."
         }
       ],
       "description": {
-        "en": "Real-time sports results platform I co-founded. The core is a data pipeline that ingests live feeds from external providers, normalizes and persists them, and serves them through high-traffic, SEO-oriented public pages. Asynchronous workers handle processing so match views stay fast even under load.",
-        "es": "Plataforma de resultados deportivos en tiempo real que cofundé. El núcleo es un pipeline de datos que ingiere feeds en vivo de proveedores externos, los normaliza y persiste, y los sirve en páginas públicas de alto tráfico orientadas a SEO. Workers asíncronos se encargan del procesamiento para que las vistas de partidos sigan rápidas incluso bajo carga."
+        "en": "Real-time sports results platform I co-founded. Ingestion, normalization, and persistence of external provider feeds, asynchronous processing, and high-traffic public pages — plus AI-assisted news generation with OpenAI.",
+        "es": "Plataforma de resultados deportivos en tiempo real que cofundé. Ingesta, normalización y persistencia de feeds de proveedores externos, procesamiento asíncrono y páginas públicas de alto tráfico — más generación de noticias asistida por IA con OpenAI."
       },
       "highlights": [
         "RealTime",
@@ -535,7 +459,10 @@
         "Bun",
         "Elysia",
         "PostgreSQL",
-        "Redis"
+        "Redis",
+        "OpenAI",
+        "TypeScript",
+        "Docker"
       ],
       "url": "https://minuto90score.com",
       "github": null
@@ -580,12 +507,20 @@
         "EngagementAnalytics",
         "TopicClassification",
         "AIAnalysis",
+        "RAG",
+        "Chatbot",
         "MultiUser"
       ],
       "technologies": [
         "Next.js",
         "TypeScript",
-        "Python"
+        "Python",
+        "OpenAI",
+        "RAG",
+        "Vectorial DB",
+        "PostgreSQL",
+        "Redis",
+        "Meta"
       ],
       "url": "https://smanalyzer.vercel.app",
       "github": null
@@ -596,8 +531,8 @@
       "isActive": false,
       "featured": false,
       "category": {
-        "en": "Research",
-        "es": "Investigación"
+        "en": "Full Stack Developer",
+        "es": "Desarrollador Full Stack"
       },
       "startDate": "2024-08",
       "endDate": "2025-11",
@@ -605,21 +540,13 @@
       "images": [],
       "details": [
         {
-          "en": "The source data comes from the SMAP and SMOS satellite missions as H5/HDF5 scientific datasets — huge files that researchers can't consume directly. The Python pipeline I built extracts and processes them into soil moisture, drought, and precipitation series for the Litoral region.",
-          "es": "Los datos de origen vienen de las misiones satelitales SMAP y SMOS como datasets científicos H5/HDF5 — archivos enormes que los investigadores no pueden consumir directamente. El pipeline en Python que construí los extrae y procesa en series de humedad del suelo, sequías y precipitaciones para la región Litoral."
-        },
-        {
-          "en": "Processed results live in SQL Server and move between services with Protobuf, keeping transport compact for datasets of this size.",
-          "es": "Los resultados procesados viven en SQL Server y se mueven entre servicios con Protobuf, manteniendo el transporte compacto para datasets de este tamaño."
-        },
-        {
-          "en": "The final piece is a Vue web platform where researchers explore the results as visualizations instead of digging through raw files — the difference between having data and being able to use it.",
-          "es": "La pieza final es una plataforma web en Vue donde los investigadores exploran los resultados como visualizaciones en lugar de escarbar archivos crudos — la diferencia entre tener los datos y poder usarlos."
+          "en": "Analyzed and processed SMAP/SMOS satellite data on soil moisture, drought, and precipitation, and developed the results web platform with Python, H5/HDF5, SQL Server, Protobuf, and Vue.",
+          "es": "Analicé y traté datos satelitales SMAP/SMOS sobre humedad de suelo, sequía y precipitación, y desarrollé la plataforma web de resultados con Python, H5/HDF5, SQL Server, Protobuf y Vue."
         }
       ],
       "description": {
-        "en": "Environmental research project for Argentina's national science council (CONICET). I analyzed and processed SMAP/SMOS satellite data on soil moisture, drought, and precipitation for the Litoral region, and built the web platform that presents the results to researchers.",
-        "es": "Proyecto de investigación ambiental para el CONICET. Analicé y procesé datos satelitales SMAP/SMOS de humedad del suelo, sequías y precipitaciones para la región Litoral, y construí la plataforma web que presenta los resultados a los investigadores."
+        "en": "Full Stack work for CONICET: analyzed and processed SMAP/SMOS satellite data on soil moisture, drought, and precipitation for the Litoral region, and developed the results web platform with Python, H5/HDF5, SQL Server, Protobuf, and Vue.",
+        "es": "Trabajo Full Stack para CONICET: analicé y traté datos satelitales SMAP/SMOS sobre humedad de suelo, sequía y precipitación en la región del litoral, y desarrollé la plataforma web de resultados con Python, H5/HDF5, SQL Server, Protobuf y Vue."
       },
       "highlights": [
         "SatelliteData",
@@ -652,84 +579,83 @@
       "images": [],
       "details": [
         {
-          "en": "There is no app to install: the user simply writes to a WhatsApp number, an OpenAI-powered conversational flow interprets the request, and the system takes it from there. That constraint — the entire UX inside a chat — shaped every design decision.",
-          "es": "No hay app que instalar: el usuario simplemente le escribe a un número de WhatsApp, un flujo conversacional potenciado por OpenAI interpreta el pedido y el sistema se encarga del resto. Esa restricción — toda la UX dentro de un chat — moldeó cada decisión de diseño."
+          "en": "The rider-facing experience is a React Native app. Riders and drivers talk through Meta's official WhatsApp Business API — no unofficial scrapers — with an OpenAI-powered conversational flow that interprets requests.",
+          "es": "La experiencia del pasajero es una app en React Native. Pasajeros y conductores se comunican por la API oficial de WhatsApp Business de Meta — sin scrapers no oficiales — con un flujo conversacional potenciado por OpenAI que interpreta los pedidos."
         },
         {
-          "en": "Behind the conversation, driver matching runs in real time over Socket.IO using the rider's location via the Maps platform, and messages flow through Meta's official WhatsApp API.",
-          "es": "Detrás de la conversación, el matching de conductores corre en tiempo real por Socket.IO usando la ubicación del pasajero vía la plataforma de Maps, y los mensajes fluyen por la API oficial de WhatsApp de Meta."
-        },
-        {
-          "en": "An Angular panel gives operators visibility over rides and drivers; Express + MongoDB power the backend.",
-          "es": "Un panel en Angular da a los operadores visibilidad sobre viajes y conductores; Express + MongoDB sostienen el backend."
+          "en": "Driver matching runs in real time over Socket.IO, with location powered by Google Maps. Express backs the API.",
+          "es": "El matching de conductores corre en tiempo real por Socket.IO, con ubicación vía Google Maps. Express sostiene la API."
         }
       ],
       "description": {
-        "en": "Automated WhatsApp assistant that connects users with nearby drivers for fast and secure transportation. Built with an OpenAI-powered conversational flow, real-time driver matching via sockets, and Meta's WhatsApp integration.",
-        "es": "Asistente automatizado de WhatsApp que conecta usuarios con conductores cercanos para un transporte rápido y seguro. Construido con un flujo conversacional potenciado por OpenAI, matching de conductores en tiempo real vía sockets y la integración de WhatsApp de Meta."
+        "en": "Transportation assistant built with React Native and Meta's official WhatsApp integration. Connects riders with nearby drivers using an OpenAI conversational flow, real-time matching over Express + Socket.IO, and Google Maps.",
+        "es": "Asistente de transporte hecho con React Native e integración oficial de WhatsApp (Meta). Conecta pasajeros con conductores cercanos mediante un flujo conversacional de OpenAI, matching en tiempo real con Express + Socket.IO y Google Maps."
       },
       "highlights": [
         "WhatsApp",
-        "Chatbot",
+        "ReactNative",
         "OpenAI",
         "RealTime",
         "Geolocation"
       ],
       "technologies": [
-        "Angular",
+        "React Native",
         "Express",
         "SocketIO",
-        "MongoDB",
+        "Google Maps",
         "OpenAI",
-        "Maps",
         "Meta"
       ],
       "url": null,
       "github": "https://github.com/sebguevara/mailo"
     },
     {
-      "name": "Tasky App",
-      "slug": "tasky",
+      "name": "FormSync",
+      "slug": "formsync",
       "isActive": false,
       "featured": false,
       "category": {
-        "en": "Personal",
-        "es": "Personal"
+        "en": "Side Project",
+        "es": "Side Project"
       },
       "startDate": null,
       "endDate": null,
-      "image": "/src/assets/projects/tasky.webp",
+      "image": "/src/assets/projects/dayflow.webp",
       "images": [],
       "details": [
         {
-          "en": "When someone creates, assigns, or completes a task, the change propagates instantly to the rest of the team over Socket.IO — no refresh, no polling. That real-time layer is the heart of the app.",
-          "es": "Cuando alguien crea, asigna o completa una tarea, el cambio se propaga al instante al resto del equipo por Socket.IO — sin refrescar, sin polling. Esa capa en tiempo real es el corazón de la app."
+          "en": "The client is fully offline-first: React Native talks to a local Realm database, so creating surveys, capturing responses, and editing data never wait on the network. When the device reconnects, Realm Device Sync uploads the pending changeset and pulls remote updates from MongoDB Atlas.",
+          "es": "El cliente es fully offline-first: React Native habla con una base Realm local, así que crear encuestas, capturar respuestas y editar datos nunca espera a la red. Cuando el dispositivo vuelve a conectarse, Realm Device Sync sube el changeset pendiente y trae las actualizaciones remotas desde MongoDB Atlas."
         },
         {
-          "en": "The UI was designed mobile-first with Ionic and Tailwind on top of Angular, so it works as a phone app first and scales up to desktop. Express + MongoDB run the backend, and the full source is public on GitHub.",
-          "es": "La UI fue diseñada mobile-first con Ionic y Tailwind sobre Angular, así funciona primero como app de teléfono y escala a desktop. Express + MongoDB corren el backend, y el código completo es público en GitHub."
+          "en": "The hard part is multi-user, multi-survey sync. Concurrent offline edits across the same survey need conflict resolution (operational transforms / last-writer-wins on scalar fields, merge-friendly list ops), subscription scopes so each user only syncs the surveys they belong to, and careful handling of client resets when history diverges.",
+          "es": "Lo difícil es el sync multi-usuario y multi-encuesta. Ediciones offline concurrentes sobre la misma encuesta requieren resolución de conflictos (operational transforms / last-writer-wins en campos escalares, merges amigables en listas), scopes de suscripción para que cada usuario solo sincronice las encuestas a las que pertenece, y manejo cuidadoso de client resets cuando el historial diverge."
+        },
+        {
+          "en": "On the server side, Redis caches hot state and RabbitMQ queues the post-sync work — aggregations, fan-out to collaborators, and heavier processing that shouldn't block the sync path itself.",
+          "es": "Del lado servidor, Redis cachea estado caliente y RabbitMQ encola el trabajo post-sync — agregaciones, fan-out a colaboradores y procesamiento más pesado que no debería bloquear el path de sincronización."
         }
       ],
       "description": {
-        "en": "Task management application to create, assign, and track tasks, designed to streamline team collaboration. Real-time updates via sockets and a mobile-first UI built with Ionic.",
-        "es": "Aplicación de gestión de tareas para crear, asignar y hacer seguimiento de tareas, diseñada para agilizar la colaboración en equipo. Actualizaciones en tiempo real vía sockets y una UI mobile-first construida con Ionic."
+        "en": "Private side project: a React Native survey platform to create, track, and manage surveys of any kind. Built offline-first with Realm — everything works without internet and syncs to MongoDB when connectivity returns, across multiple users and multiple surveys. The interesting challenge is the reconnection path: queued local changes, conflict resolution, and server-side processing with Redis and RabbitMQ.",
+        "es": "Side project privado: plataforma mobile en React Native para crear, trackear y manejar encuestas de todo tipo. Offline-first con Realm — podés hacer todo sin internet y sincronizar con MongoDB al recuperar conexión, con múltiples usuarios y múltiples encuestas. Lo interesante es el proceso al volver online: cambios locales en cola, resolución de conflictos y procesamiento server-side con Redis y RabbitMQ."
       },
       "highlights": [
-        "TaskManagement",
-        "RealTime",
-        "TeamCollaboration",
+        "OfflineFirst",
+        "MultiUser",
+        "Sync",
+        "Surveys",
         "Mobile"
       ],
       "technologies": [
-        "Angular",
-        "Ionic",
-        "Express",
+        "React Native",
+        "Realm",
         "MongoDB",
-        "Tailwind",
-        "SocketIO"
+        "Redis",
+        "RabbitMQ"
       ],
-      "url": "https://taskyapp.web.app",
-      "github": "https://github.com/Seba74/task-app"
+      "url": null,
+      "github": null
     }
   ]
 }

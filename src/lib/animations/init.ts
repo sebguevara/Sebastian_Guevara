@@ -3,6 +3,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { animateHero } from "@/lib/animations/hero";
 import { animateReveals } from "@/lib/animations/reveal";
 import { initCarousels } from "@/lib/carousel";
+import { initLightbox } from "@/lib/lightbox";
 import { initScrollSpy } from "@/lib/nav/scrollspy";
 
 let cleanup: (() => void) | null = null;
@@ -20,6 +21,7 @@ export function initClientEnhancements() {
 
   const disposeScrollSpy = initScrollSpy();
   const disposeCarousels = initCarousels();
+  const disposeLightbox = initLightbox();
   const mm = gsap.matchMedia();
 
   mm.add("(prefers-reduced-motion: no-preference)", () => {
@@ -42,6 +44,7 @@ export function initClientEnhancements() {
   cleanup = () => {
     disposeScrollSpy?.();
     disposeCarousels();
+    disposeLightbox();
     mm.revert();
   };
 }

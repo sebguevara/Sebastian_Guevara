@@ -1,0 +1,146 @@
+---
+import Check from "@/components/icons/Check.astro";
+import Email from "@/components/icons/brands/Email.astro";
+
+interface Props {
+  email: string;
+  /** Idle label, shown before the address is copied. */
+  label: string;
+  /** Label swapped in for a couple of seconds after a successful copy. */
+  copiedLabel: string;
+  class?: string;
+}
+
+const { email, label, copiedLabel, class: className } = Astro.props;
+---
+
+<button
+  type="button"
+  data-copy-email
+  data-email={email}
+  aria-label={label}
+  class:list={["btn-primary copy-email", className]}
+>
+  <span class="cxe-ico cxe-ico--idle" aria-hidden="true"><Email /></span>
+  <span class="cxe-ico cxe-ico--done" aria-hidden="true"><Check /></span>
+  {/* Both labels are stacked in one grid cell so the button reserves the
+      width of the longer one — its size never changes between states. */}
+  <span class="cxe-label">
+    <span class="cxe-label-text cxe-label-text--idle">{label}</span>
+    <span class="cxe-label-text cxe-label-text--done" aria-hidden="true">
+      {copiedLabel}
+    </span>
+  </span>
+</button>
+
+<style>
+  .copy-email {
+    cursor: pointer;
+    /* Center its own content: the .hero-cta rule that does this lives in a
+       parent's scoped styles and can't reach across the component boundary. */
+    justify-content: center;
+  }
+
+  .copy-email :global(.cxe-ico svg) {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .cxe-ico {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .cxe-ico--done {
+    display: none;
+  }
+
+  .copy-email.is-copied .cxe-ico--idle {
+    display: none;
+  }
+
+  .copy-email.is-copied .cxe-ico--done {
+    display: inline-flex;
+  }
+
+  /* Stack both labels; the hidden one keeps its footprint (visibility, not
+     display) so the button width equals the wider label in every state. */
+  .cxe-label {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+  }
+
+  .cxe-label-text {
+    grid-area: 1 / 1;
+    white-space: nowrap;
+  }
+
+  .cxe-label-text--done {
+    visibility: hidden;
+  }
+
+  .copy-email.is-copied .cxe-label-text--idle {
+    visibility: hidden;
+  }
+
+  .copy-email.is-copied .cxe-label-text--done {
+    visibility: visible;
+  }
+</style>
+
+<script>
+  const timers = new WeakMap<HTMLElement, number>();
+
+  async function writeToClipboard(text: string): Promise<boolean> {
+    try {
+      await navigator.clipboard.writeText(text);
+      return true;
+    } catch {
+      // Fallback for insecure contexts / browsers without the async API.
+      try {
+        const textarea = document.createElement("textarea");
+        textarea.value = text;
+        textarea.setAttribute("readonly", "");
+        textarea.style.position = "fixed";
+        textarea.style.opacity = "0";
+        document.body.appendChild(textarea);
+        textarea.select();
+        const ok = document.execCommand("copy");
+        textarea.remove();
+        return ok;
+      } catch {
+        return false;
+      }
+    }
+  }
+
+  async function handleCopy(button: HTMLElement) {
+    const email = button.dataset.email;
+    if (!email) return;
+
+    const copied = await writeToClipboard(email);
+
+    // Never dead-end: if copying isn't possible, fall back to the mail client.
+    if (!copied) {
+      window.location.href = `mailto:${email}`;
+      return;
+    }
+
+    button.classList.add("is-copied");
+
+    clearTimeout(timers.get(button));
+    timers.set(
+      button,
+      window.setTimeout(() => button.classList.remove("is-copied"), 2000),
+    );
+  }
+
+  // Delegated so it survives ClientRouter DOM swaps and covers every instance.
+  document.addEventListener("click", (event) => {
+    const button = (event.target as HTMLElement).closest<HTMLElement>(
+      "[data-copy-email]",
+    );
+    if (button) handleCopy(button);
+  });
+</script>

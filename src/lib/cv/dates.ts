@@ -2,17 +2,21 @@ import type { Locale } from "@/consts/locale";
 
 const intlByLocale: Record<Locale, string> = { en: "en-US", es: "es-AR" };
 
-/** "2024-02" → "February 2024" / "Febrero de 2024". Unknown formats pass through. */
+/** "2024-02" → "Feb 2024" / "Feb 2024". Unknown formats pass through. */
 export function formatMonth(iso: string, lang: Locale): string {
   const match = /^(\d{4})-(\d{2})$/.exec(iso);
   if (!match) return iso;
   const [, year, month] = match;
   const formatted = new Intl.DateTimeFormat(intlByLocale[lang], {
-    month: "long",
+    month: "short",
     year: "numeric",
     timeZone: "UTC",
   }).format(new Date(Date.UTC(Number(year), Number(month) - 1, 1)));
-  return formatted.charAt(0).toUpperCase() + formatted.slice(1);
+  // Drop trailing dots from some locales ("ene." → "ene") and tidy separators.
+  return formatted
+    .replace(/\./g, "")
+    .replace(/\s+de\s+/i, " ")
+    .replace(/^./, (c) => c.toUpperCase());
 }
 
 /** Whole years elapsed since an ISO "YYYY-MM" date (evaluated at build time). */

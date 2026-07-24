@@ -60,6 +60,12 @@ function buildCv(lang: Locale): Cv {
     startDate: job.startDate,
     endDate: job.endDate,
     summary: tOptional(job.summary as LocalizedString | undefined, lang),
+    companyNote: tOptional(
+      ("companyNote" in job ? job.companyNote : undefined) as
+        | LocalizedString
+        | undefined,
+      lang,
+    ),
     highlights: job.highlights
       ? tList(job.highlights as LocalizedString[], lang)
       : undefined,
@@ -84,7 +90,10 @@ function buildCv(lang: Locale): Cv {
   }));
 
   const skills: SkillGroup[] = (raw.skills ?? []).map((skill) => ({
-    name: skill.name,
+    name:
+      typeof skill.name === "string"
+        ? skill.name
+        : t(skill.name as LocalizedString, lang),
     level: skill.level,
     keywords: skill.keywords,
   }));

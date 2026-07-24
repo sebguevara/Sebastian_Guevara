@@ -6,6 +6,7 @@ import Contact from "@/sections/Contact.astro";
 import Experience from "@/sections/Experience.astro";
 import Education from "@/sections/Education.astro";
 import Projects from "@/sections/Projects.astro";
+import Skills from "@/sections/Skills.astro";
 import SectionContainer from "@/components/ui/SectionContainer.astro";
 import Footer from "@/sections/Footer.astro";
 import { getLocale } from "@/consts/locale";
@@ -30,6 +31,9 @@ const site = getSiteMeta(getLocale(Astro.currentLocale));
       </SectionContainer>
       <SectionContainer id="education">
         <Education />
+      </SectionContainer>
+      <SectionContainer id="skills">
+        <Skills />
       </SectionContainer>
       <SectionContainer id="about">
         <About />

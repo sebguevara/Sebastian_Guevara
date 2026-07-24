@@ -1,0 +1,22 @@
+---
+import SkillCard from "@/components/about/SkillCard.astro";
+import SectionHeader from "@/components/ui/SectionHeader.astro";
+import { getCopy } from "@/consts/copy";
+import { getLocale } from "@/consts/locale";
+import { getCv } from "@/lib/cv";
+
+const locale = getLocale(Astro.currentLocale);
+const copy = getCopy(locale);
+const { skills } = getCv(locale);
+---
+
+<div class="py-14 sm:py-20">
+  <SectionHeader
+    eyebrow={copy.sections.skills.eyebrow}
+    title={copy.sections.skills.title}
+  />
+
+  <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    {skills.map((skill) => <SkillCard {...skill} />)}
+  </div>
+</div>

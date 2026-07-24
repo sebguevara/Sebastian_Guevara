@@ -5,9 +5,11 @@ import { getLocale } from "@/consts/locale";
 import { getCv } from "@/lib/cv";
 
 export function getStaticPaths() {
-  return getCv("en").projects.map((project) => ({
-    params: { slug: project.slug },
-  }));
+  return getCv("en")
+    .projects.filter((project) => project.featured)
+    .map((project) => ({
+      params: { slug: project.slug },
+    }));
 }
 
 const { slug } = Astro.params;

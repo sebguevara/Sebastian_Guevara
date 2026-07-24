@@ -19,30 +19,60 @@ const { title, description } = Astro.props;
 const locale = getLocale(Astro.currentLocale);
 const { basics } = getCv(locale);
 
-const site = Astro.site ?? new URL("http://localhost:4321");
+const site = Astro.site ?? new URL("https://sebguevara.site");
 const pathname = Astro.url.pathname;
 const basePath = delocalizePath(pathname);
 const canonicalUrl = new URL(pathname, site);
 const enUrl = new URL(basePath, site);
 const esUrl = new URL(localizePath(basePath, "es"), site);
 const ogImage = new URL("/og.png", site);
+const logoUrl = new URL("/icon-512.png", site);
+const jobTitle =
+  typeof basics.label === "string" ? basics.label : "Full Stack Developer";
 
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "Person",
-  name: basics.name,
-  jobTitle: "Full Stack Developer",
-  email: `mailto:${basics.email}`,
-  url: site.toString(),
-  image: ogImage.toString(),
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: basics.location.city,
-    addressRegion: basics.location.region,
-    addressCountry: "AR",
-  },
-  sameAs: basics.profiles.map((profile) => profile.url),
-  knowsLanguage: ["es", "en"],
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": `${site}#website`,
+      url: site.toString(),
+      name: `${basics.name} — ${jobTitle}`,
+      description,
+      inLanguage: [locale === "es" ? "es-AR" : "en-US"],
+      publisher: { "@id": `${site}#person` },
+    },
+    {
+      "@type": "Person",
+      "@id": `${site}#person`,
+      name: basics.name,
+      url: site.toString(),
+      image: logoUrl.toString(),
+      email: `mailto:${basics.email}`,
+      jobTitle,
+      description: basics.summary,
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: basics.location.city,
+        addressRegion: basics.location.region,
+        addressCountry: "AR",
+      },
+      sameAs: basics.profiles
+        .filter((profile) => ["LinkedIn", "GitHub"].includes(profile.network))
+        .map((profile) => profile.url),
+      knowsLanguage: ["es", "en"],
+      knowsAbout: [
+        "Full Stack Development",
+        "TypeScript",
+        "React",
+        "Next.js",
+        "Node.js",
+        "PostgreSQL",
+        "Redis",
+        "Applied AI",
+      ],
+    },
+  ],
 };
 ---
 
@@ -142,8 +172,15 @@ const jsonLd = {
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="author" content={basics.name} />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
     <meta name="theme-color" content={themeColors.dark} />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="color-scheme" content="dark light" />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
+    <link rel="manifest" href="/site.webmanifest" />
+
     <link rel="canonical" href={canonicalUrl} />
     <link rel="alternate" hreflang="en" href={enUrl} />
     <link rel="alternate" hreflang="es" href={esUrl} />
@@ -157,8 +194,10 @@ const jsonLd = {
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:image" content={ogImage} />
+    <meta property="og:image:alt" content={`${basics.name} — ${jobTitle}`} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/png" />
     <meta property="og:locale" content={locale === "es" ? "es_AR" : "en_US"} />
     <meta
       property="og:locale:alternate"
@@ -170,6 +209,7 @@ const jsonLd = {
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content={`${basics.name} — ${jobTitle}`} />
     <meta name="twitter:creator" content="@_SebGuevara" />
 
     <meta name="generator" content={Astro.generator} />
@@ -192,5 +232,6 @@ const jsonLd = {
     </div>
     <MobileNav />
     <script src="@/scripts/client.ts"></script>
+    <script src="@/scripts/analytics.ts"></script>
   </body>
 </html>

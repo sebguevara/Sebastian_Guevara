@@ -4,6 +4,7 @@ import Briefcase from "@/components/icons/Briefcase.astro";
 import FileCode from "@/components/icons/Filecode.astro";
 import Home from "@/components/icons/Home.astro";
 import School from "@/components/icons/School.astro";
+import Skill from "@/components/icons/Skill.astro";
 import Github from "@/components/icons/brands/Github.astro";
 import Linkedin from "@/components/icons/brands/Linkedin.astro";
 import Email from "@/components/icons/brands/Email.astro";
@@ -13,11 +14,13 @@ import ThemeToggle from "@/components/layout/ThemeToggle.astro";
 import { getCopy } from "@/consts/copy";
 import { getLocale, localizePath } from "@/consts/locale";
 import { getNav, getSocial } from "@/consts/navigation";
+import { getCv } from "@/lib/cv";
 
 const locale = getLocale(Astro.currentLocale);
 const copy = getCopy(locale);
 const nav = getNav(locale);
 const social = getSocial(locale);
+const { basics } = getCv(locale);
 const homeUrl = `${localizePath("/", locale)}#home`;
 
 const Icons: Record<string, any> = {
@@ -26,6 +29,7 @@ const Icons: Record<string, any> = {
   FileCode,
   Home,
   School,
+  Skill,
   Github,
   Linkedin,
   Email,
@@ -40,7 +44,7 @@ const Icons: Record<string, any> = {
     aria-label={copy.nav.home}
     class="transition-opacity hover:opacity-70"
   >
-    <Logo class="h-9 w-auto" width={34} title={copy.nav.home} />
+    <Logo class="h-9 w-auto" width={34} title={basics.name} />
   </a>
 
   <nav aria-label={copy.nav.aria}>

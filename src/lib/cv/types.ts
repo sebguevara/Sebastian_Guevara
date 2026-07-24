@@ -30,6 +30,7 @@ export type WorkItem = {
   startDate: string;
   endDate: string | null;
   summary?: string;
+  companyNote?: string;
   highlights?: string[];
   data?: Array<{ company: string; summary: string }>;
 };

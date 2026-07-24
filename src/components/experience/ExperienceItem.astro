@@ -14,6 +14,7 @@ const {
   startDate,
   endDate,
   summary,
+  companyNote,
   highlights,
   data,
 } = Astro.props;
@@ -62,7 +63,20 @@ const period = `${formatMonth(startDate, lang)} — ${
   <div class="mt-5 flex flex-col gap-6 lg:mt-0 lg:gap-8">
     {
       summary && (
-        <p class="text-sm leading-relaxed text-muted">{summary}</p>
+        <p class="text-base font-medium leading-relaxed text-ink text-balance">
+          {summary}
+        </p>
+      )
+    }
+
+    {
+      companyNote && (
+        <aside class="flex items-start gap-3 rounded-lg border border-line bg-surface/50 px-4 py-3">
+          <span class="mt-px font-mono text-[0.625rem] font-semibold uppercase tracking-widest text-accent whitespace-nowrap">
+            {copy.experience.company}
+          </span>
+          <p class="text-xs leading-relaxed text-faint">{companyNote}</p>
+        </aside>
       )
     }
 

@@ -1,7 +1,7 @@
 ---
 import fs from "node:fs";
-import Email from "@/components/icons/brands/Email.astro";
 import Download from "@/components/icons/Download.astro";
+import CopyEmailButton from "@/components/ui/CopyEmailButton.astro";
 import { getCopy } from "@/consts/copy";
 import { getLocale } from "@/consts/locale";
 import { getCv } from "@/lib/cv";
@@ -40,10 +40,12 @@ const hasCvPdf = fs.existsSync(`public/${cvFile}`);
 
   <div class="hero-actions" data-hero-item>
     <div class="hero-ctas">
-      <a href={`mailto:${email}`} class="btn-primary hero-cta">
-        <Email class="size-4" />
-        {copy.hero.ctaContact}
-      </a>
+      <CopyEmailButton
+        email={email}
+        label={copy.contact.copyEmail}
+        copiedLabel={copy.contact.copied}
+        class="hero-cta"
+      />
       {
         hasCvPdf ? (
           <a href={cvHref} download={cvFile} class="btn-ghost hero-cta">
@@ -53,6 +55,7 @@ const hasCvPdf = fs.existsSync(`public/${cvFile}`);
         ) : null
       }
     </div>
+    <a href={`mailto:${email}`} class="hero-email">{email}</a>
   </div>
 </section>
 
@@ -207,6 +210,20 @@ const hasCvPdf = fs.existsSync(`public/${cvFile}`);
   .hero-cta {
     width: 100%;
     justify-content: center;
+  }
+
+  .hero-email {
+    display: inline-block;
+    margin-top: 1.25rem;
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    letter-spacing: 0.02em;
+    color: var(--color-faint);
+    transition: color 0.3s ease;
+  }
+
+  .hero-email:hover {
+    color: var(--color-accent);
   }
 
   @media (min-width: 640px) {

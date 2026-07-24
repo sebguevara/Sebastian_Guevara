@@ -2,7 +2,7 @@
 import Github from "@/components/icons/brands/Github.astro";
 import Linkedin from "@/components/icons/brands/Linkedin.astro";
 import X from "@/components/icons/brands/X.astro";
-import Email from "@/components/icons/brands/Email.astro";
+import CopyEmailButton from "@/components/ui/CopyEmailButton.astro";
 import { getCopy } from "@/consts/copy";
 import { getLocale } from "@/consts/locale";
 import { getCv } from "@/lib/cv";
@@ -27,11 +27,18 @@ const socialProfiles = basics.profiles.filter(
     <p class="max-w-md text-sm leading-relaxed text-muted sm:text-base">
       {copy.contact.body}
     </p>
-    <a href={`mailto:${basics.email}`} class="btn-primary mt-2">
-      <Email class="size-4" />
-      {copy.contact.cta}
+    <CopyEmailButton
+      email={basics.email}
+      label={copy.contact.copyEmail}
+      copiedLabel={copy.contact.copied}
+      class="mt-2 w-full max-w-xs justify-center sm:w-auto"
+    />
+    <a
+      href={`mailto:${basics.email}`}
+      class="font-mono text-xs text-faint transition-colors duration-300 hover:text-accent"
+    >
+      {basics.email}
     </a>
-    <p class="font-mono text-xs text-faint">{basics.email}</p>
     <div class="flex items-center gap-5">
       {
         socialProfiles.map((profile) => {
