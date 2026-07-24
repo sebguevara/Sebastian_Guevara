@@ -1,116 +1,224 @@
 ---
 import fs from "node:fs";
-import Github from "@/components/icons/brands/Github.astro";
-import Linkedin from "@/components/icons/brands/Linkedin.astro";
-import X from "@/components/icons/brands/X.astro";
 import Email from "@/components/icons/brands/Email.astro";
-import Maps from "@/components/icons/brands/Maps.astro";
 import Download from "@/components/icons/Download.astro";
 import { getCopy } from "@/consts/copy";
-import { getLocale, localizePath } from "@/consts/locale";
+import { getLocale } from "@/consts/locale";
 import { getCv } from "@/lib/cv";
 
 const locale = getLocale(Astro.currentLocale);
 const copy = getCopy(locale);
 const { basics } = getCv(locale);
 
-const { name, tagline, label, email, location, profiles } = basics;
-const roles = label.split("|").map((segment) => segment.trim());
+const { name, tagline, email } = basics;
+const [firstName, ...lastParts] = name.split(" ");
+const lastName = lastParts.join(" ");
 
-// Per-locale CV download — the button renders only when the PDF exists.
-const cvHref = `/cv-${locale}.pdf`;
-const hasCvPdf = fs.existsSync(`public/cv-${locale}.pdf`);
-
-const projectsUrl = `${localizePath("/", locale)}#projects`;
-
-const Icons: Record<string, any> = { GitHub: Github, LinkedIn: Linkedin, X };
+const cvFile = `sebastian_guevara_${locale}.pdf`;
+const cvHref = `/${cvFile}`;
+const hasCvPdf = fs.existsSync(`public/${cvFile}`);
 ---
 
-<div
-  class="flex min-h-[calc(100dvh-3.5rem)] flex-col justify-center py-12 lg:min-h-dvh"
-  data-animate="hero"
->
-  <p class="mb-5 hidden lg:block" data-hero-item>
-    <span class="chip border-accent/30 text-accent">
-      <span class="relative flex size-1.5">
-        <span
-          class="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-60"
-        ></span>
-        <span class="relative inline-flex size-1.5 rounded-full bg-accent"
-        ></span>
-      </span>
-      {copy.hero.available}
-    </span>
-  </p>
-  <p
-    class="eyebrow mb-4 flex flex-wrap items-center gap-x-2.5 gap-y-1.5"
-    data-hero-item
-  >
-    {
-      roles.map((role, index) => (
-        <>
-          {index > 0 && (
-            <span class="text-faint" aria-hidden="true">
-              ·
-            </span>
-          )}
-          <span>{role}</span>
-        </>
-      ))
-    }
-  </p>
-  <h1
-    class="bg-linear-to-br from-ink via-ink to-muted bg-clip-text text-[2.75rem] font-extrabold leading-[1.05] tracking-tight text-transparent sm:text-6xl md:text-7xl"
-    data-hero-item
-  >
-    {name}
-  </h1>
-  <p
-    class="mt-6 max-w-xl text-base leading-relaxed text-muted sm:text-lg"
-    data-hero-item
-  >
-    {tagline}
-  </p>
-  <p
-    class="mt-4 flex items-center gap-1.5 font-mono text-xs text-faint"
-    data-hero-item
-  >
-    <Maps class="size-3.5 text-accent" />
-    {location.city}, {location.region}
-  </p>
+<section class="hero" data-animate="hero">
+  <div class="hero-role" data-hero-item>
+    <span class="hero-role-mark" aria-hidden="true"></span>
+    <p>{copy.hero.role}</p>
+  </div>
 
-  <div class="mt-8 flex flex-wrap items-center gap-3" data-hero-item>
-    <a href={`mailto:${email}`} class="btn-primary">
-      <Email class="size-4" />
-      {copy.hero.ctaContact}
-    </a>
-    <a href={projectsUrl} class="btn-ghost">
-      {copy.hero.ctaProjects}
-    </a>
+  <h1 class="hero-name" data-hero-item>
+    <span class="hero-name-line">{firstName}</span>
     {
-      hasCvPdf && (
-        <a href={cvHref} download class="btn-ghost">
-          <Download class="size-4" />
-          {copy.hero.downloadCv}
-        </a>
+      lastName && (
+        <span class="hero-name-line hero-name-line--accent">{lastName}</span>
       )
     }
-    <div class="mx-1 h-6 w-px bg-line"></div>
-    {
-      profiles.map((profile) => {
-        const Icon = Icons[profile.network];
-        return Icon ? (
-          <a
-            href={profile.url}
-            target="_blank"
-            rel="noopener"
-            aria-label={profile.network}
-            class="text-muted transition-colors duration-300 hover:text-accent"
-          >
-            <Icon class="size-5" />
+  </h1>
+
+  <p class="hero-support" data-hero-item>{copy.hero.support}</p>
+
+  <p class="hero-tagline" data-hero-item>{tagline}</p>
+
+  <div class="hero-actions" data-hero-item>
+    <div class="hero-ctas">
+      <a href={`mailto:${email}`} class="btn-primary hero-cta">
+        <Email class="size-4" />
+        {copy.hero.ctaContact}
+      </a>
+      {
+        hasCvPdf ? (
+          <a href={cvHref} download={cvFile} class="btn-ghost hero-cta">
+            <Download class="size-4" />
+            {copy.hero.downloadCv}
           </a>
-        ) : null;
-      })
-    }
+        ) : null
+      }
+    </div>
   </div>
-</div>
+</section>
+
+<style>
+  .hero {
+    display: flex;
+    min-height: calc(100dvh - 7.5rem);
+    flex-direction: column;
+    justify-content: center;
+    padding-block: 2.5rem 3rem;
+  }
+
+  @media (min-width: 640px) {
+    .hero {
+      padding-block: 3.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .hero {
+      min-height: 100dvh;
+      padding-block: 4rem;
+    }
+  }
+
+  .hero-role {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .hero-role-mark {
+    display: block;
+    width: 2rem;
+    height: 2px;
+    background: var(--color-accent);
+    flex-shrink: 0;
+  }
+
+  .hero-role p {
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+  }
+
+  @media (min-width: 640px) {
+    .hero-role p {
+      font-size: 0.8125rem;
+      letter-spacing: 0.32em;
+    }
+
+    .hero-role-mark {
+      width: 2.75rem;
+    }
+  }
+
+  .hero-name {
+    margin: 1rem 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.02em;
+  }
+
+  .hero-name-line {
+    display: block;
+    font-size: clamp(3.25rem, 14vw, 7.5rem);
+    font-weight: 800;
+    line-height: 0.9;
+    letter-spacing: -0.05em;
+    color: var(--color-ink);
+    text-wrap: balance;
+  }
+
+  .hero-name-line--accent {
+    background: linear-gradient(
+      135deg,
+      var(--color-ink) 20%,
+      var(--color-accent) 120%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  @media (min-width: 1024px) {
+    .hero-name {
+      margin-top: 1.25rem;
+    }
+
+    .hero-name-line {
+      font-size: clamp(4.5rem, 8.5vw, 8.25rem);
+    }
+  }
+
+  .hero-support {
+    margin: 1.25rem 0 0;
+    max-width: 28rem;
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    line-height: 1.5;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-faint);
+  }
+
+  @media (min-width: 640px) {
+    .hero-support {
+      margin-top: 1.5rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.22em;
+    }
+  }
+
+  .hero-tagline {
+    margin: 1.5rem 0 0;
+    max-width: 42rem;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--color-ink);
+    text-wrap: pretty;
+  }
+
+  @media (min-width: 640px) {
+    .hero-tagline {
+      margin-top: 1.75rem;
+      font-size: 1.2rem;
+      line-height: 1.75;
+    }
+  }
+
+  .hero-actions {
+    margin-top: 2rem;
+  }
+
+  @media (min-width: 640px) {
+    .hero-actions {
+      margin-top: 2.5rem;
+    }
+  }
+
+  .hero-ctas {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .hero-cta {
+    width: 100%;
+    justify-content: center;
+  }
+
+  @media (min-width: 640px) {
+    .hero-ctas {
+      width: auto;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .hero-cta {
+      width: auto;
+    }
+  }
+</style>

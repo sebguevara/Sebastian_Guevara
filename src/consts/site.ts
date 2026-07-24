@@ -4,7 +4,7 @@ import type { Locale } from "@/consts/locale";
 /** Page background per theme — kept in sync with src/styles/tokens.css. */
 export const themeColors = {
   dark: "#0a0a0b",
-  light: "#faf9fa",
+  light: "#faf6f1",
 } as const;
 
 export function getSiteMeta(lang: Locale) {

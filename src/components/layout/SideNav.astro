@@ -2,6 +2,7 @@
 import About from "@/components/icons/About.astro";
 import Briefcase from "@/components/icons/Briefcase.astro";
 import FileCode from "@/components/icons/Filecode.astro";
+import Home from "@/components/icons/Home.astro";
 import School from "@/components/icons/School.astro";
 import Github from "@/components/icons/brands/Github.astro";
 import Linkedin from "@/components/icons/brands/Linkedin.astro";
@@ -23,8 +24,8 @@ const Icons: Record<string, any> = {
   About,
   Briefcase,
   FileCode,
+  Home,
   School,
-  Logo,
   Github,
   Linkedin,
   Email,
@@ -39,7 +40,7 @@ const Icons: Record<string, any> = {
     aria-label={copy.nav.home}
     class="transition-opacity hover:opacity-70"
   >
-    <Logo class="w-8" />
+    <Logo class="h-9 w-auto" width={34} title={copy.nav.home} />
   </a>
 
   <nav aria-label={copy.nav.aria}>

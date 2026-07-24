@@ -28,8 +28,6 @@ const {
   images,
   description,
   details,
-  isActive,
-  category,
   startDate,
   endDate,
   highlights,
@@ -73,21 +71,11 @@ const period = startDate
   </a>
 
   <header class="mt-8" data-hero-item>
-    <div class="flex flex-wrap items-center gap-2.5">
-      {category && <span class="chip">{category}</span>}
-      {
-        isActive && (
-          <span class="chip border-accent/30 text-accent">
-            <span class="relative flex size-1.5">
-              <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-60" />
-              <span class="relative inline-flex size-1.5 rounded-full bg-accent" />
-            </span>
-            {copy.projects.live}
-          </span>
-        )
-      }
-      {period && <span class="font-mono text-xs text-faint">{period}</span>}
-    </div>
+    {
+      period && (
+        <p class="font-mono text-xs text-faint">{period}</p>
+      )
+    }
 
     <h1
       class="mt-4 bg-linear-to-br from-ink via-ink to-muted bg-clip-text text-4xl font-extrabold leading-[1.05] tracking-tight text-transparent sm:text-5xl md:text-6xl"

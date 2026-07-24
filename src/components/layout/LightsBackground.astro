@@ -2,24 +2,21 @@
 </div>
 
 <style>
-  /* Brand backdrop: a pre-blurred version of the splatter image
-     (background-2-soft.webp, generated with sharp) renders as a soft ambient
-     rose wash — no expensive runtime blur. On dark, `screen` removes the
-     image's black ground so only warm light remains. On light, the same soft
-     image acts as a luminance mask over the accent color. NoiseBackground
-     layers the sandy grain on top. */
+  /* Brand backdrop: soft ambient wash from the splatter image.
+     Dark uses screen so only warm light remains; light masks accent through
+     the same image. Keep shapes quiet so the sandy grain can lead. */
   .lights {
     background: url("/img/effects/background-2-soft.webp") center / cover
       no-repeat;
     mix-blend-mode: screen;
-    opacity: 0.45;
-    filter: blur(28px) saturate(1.25);
+    opacity: 0.2;
+    filter: blur(36px) saturate(1.05);
     transform: translateZ(0);
   }
 
   @media (min-width: 1024px) {
     .lights {
-      opacity: 0.38;
+      opacity: 0.16;
     }
   }
 
@@ -28,13 +25,13 @@
     mix-blend-mode: normal;
     mask: url("/img/effects/background-2-soft.webp") center / cover no-repeat
       luminance;
-    opacity: 0.28;
-    filter: none;
+    opacity: 0.14;
+    filter: blur(20px);
   }
 
   @media (min-width: 1024px) {
     :root[data-theme="light"] .lights {
-      opacity: 0.2;
+      opacity: 0.1;
     }
   }
 </style>

@@ -17,23 +17,10 @@ const homeUrl = `${localizePath("/", locale)}#home`;
     class="flex h-14 items-center justify-between gap-3 border-b border-line/60 bg-bg/70 px-5 backdrop-blur-xl"
   >
     <a href={homeUrl} class="flex items-center gap-2.5" aria-label={copy.nav.home}>
-      <Logo class="w-7" />
-      <span class="text-sm font-semibold tracking-tight">{basics.name}</span>
+      <Logo class="h-8 w-auto" width={28} title={basics.name} />
+      <span class="text-base font-semibold tracking-tight">{basics.name}</span>
     </a>
     <div class="flex items-center gap-3.5">
-      <a
-        href={`mailto:${basics.email}`}
-        class="chip transition-colors hover:border-accent/40 hover:text-ink"
-      >
-        <span class="relative flex size-1.5">
-          <span
-            class="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-60"
-          ></span>
-          <span class="relative inline-flex size-1.5 rounded-full bg-accent"
-          ></span>
-        </span>
-        {copy.hero.available}
-      </a>
       <ThemeToggle />
       <LanguageToggle />
     </div>

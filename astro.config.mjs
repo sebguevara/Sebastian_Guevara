@@ -2,6 +2,8 @@ import { defineConfig } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
 import sitemap from "@astrojs/sitemap";
 
+import react from "@astrojs/react";
+
 // TODO: replace with the final custom domain when purchased.
 const SITE = "https://sebguevara.github.io";
 
@@ -17,14 +19,12 @@ export default defineConfig({
       prefixDefaultLocale: false,
     },
   },
-  integrations: [
-    sitemap({
-      i18n: {
-        defaultLocale: "en",
-        locales: { en: "en", es: "es" },
-      },
-    }),
-  ],
+  integrations: [sitemap({
+    i18n: {
+      defaultLocale: "en",
+      locales: { en: "en", es: "es" },
+    },
+  }), react()],
   vite: {
     plugins: [tailwindcss()],
   },

@@ -25,10 +25,10 @@
 :root[data-theme="light"] {
   color-scheme: light;
 
-  --color-bg: #faf9fa;
-  --color-surface: #ffffff;
-  --color-elevated: #f1eef0;
-  --color-line: #ddd8db;
+  --color-bg: #faf6f1;
+  --color-surface: #fffcfa;
+  --color-elevated: #f3ebe3;
+  --color-line: #e5dbd2;
 
   --color-ink: #171516;
   --color-muted: #454044;

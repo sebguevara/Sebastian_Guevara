@@ -1,62 +1,48 @@
-# Hi there! 👋
+# Sebastian Guevara
 
-I'm Sebastian Guevara, a Full Stack Developer based in Corrientes, Argentina. Welcome to my portfolio!
+**Full Stack Developer** · Corrientes, Argentina
 
-Here, you'll find a showcase of my projects and skills. Feel free to explore and reach out if you'd like to connect or collaborate.
+I build production web applications, APIs, and backend services end to end — from ambiguous requirements to something that ships and stays up.
 
-Let's build something amazing together!
+---
 
-## Tech stack
+## About me
 
-- [Astro](https://astro.build) 7 (static output)
-- [Tailwind CSS](https://tailwindcss.com) 4 — CSS-first config, monochromatic dark theme with a single amber accent
-- [Bun](https://bun.sh) as package manager & runtime
-- Docker + nginx for deployment
+I'm a Colombian developer based in Corrientes, Argentina, with **5+ years** shipping software in the real world.
 
-Mobile-first UI: floating bottom dock navigation on mobile, side rail on
-desktop, capped content width. All content is driven by `cv.json`.
+I started in backend (.NET, SQL Server) on ERP and fleet logistics systems, moved into full stack consulting for enterprise clients, and today I **lead the development team** at the city government of Corrientes. We design, build, and operate high-availability systems for a city of ~400,000 people — including an end-to-end automation of the driver's license renewal process that cut operational workload by **70%**.
 
-## i18n (EN/ES)
+Outside of that role I build my own products. I co-founded **Quadro** (padel tournament SaaS) and **Minuto 90 Score** (real-time sports results), and I run **SMA**, a social media analytics platform in production for clients since 2024. In every case I own the full stack: backend, frontend, UX, and the infrastructure it runs on.
 
-The site ships in English (`/`) and Spanish (`/es/`). Translatable fields in
-`cv.json` are `{ "en": "...", "es": "..." }` objects; UI strings live in
-`src/consts/copy.ts`. An inline script picks the visitor's language: stored
-choice → browser language → timezone (Spanish-speaking zones → `/es/`).
-A manual EN/ES toggle lives in the side rail and mobile header.
+## What I care about
 
-## Dark / light theme
+- **Ownership** — taking a problem from unclear idea to production, and living with the consequences
+- **Systems that stay up** — APIs, integrations, async workers, data pipelines, caching, and deploys
+- **Speed with rigor** — I use Claude Code, Codex, and MCPs daily to move faster, and I validate everything before it ships
+- **Clear communication** — Spanish (native) and English (B2); I work well with remote and agile teams
 
-Dark is the default; a light palette is defined in `src/styles/tokens.css`
-under `[data-theme="light"]`. The toggle stores the choice and the inline
-head script applies it before first paint (system preference as fallback).
+## Core stack
 
-## SEO
+`TypeScript` · `React` · `Next.js` · `Node.js` · `Express` · `PostgreSQL` · `Redis`
 
-Canonical + `hreflang` alternates, Open Graph / Twitter cards, JSON-LD
-(`Person`), sitemap (`@astrojs/sitemap`), dynamic `robots.txt`, and a
-generated `public/og.png` (`bun run og` after editing `cv.json`).
+Also comfortable with Python, .NET/C#, PHP, Docker, Linux, and cloud (AWS / GCP). Experienced with REST/GraphQL, external integrations, asynchronous processing, data ingestion, testing, and delivery.
 
-## CV download
+## Selected work
 
-Drop `public/cv-en.pdf` and `public/cv-es.pdf`; the hero "Download CV"
-button renders per-locale only when the matching file exists.
+| Product | What it is |
+| --- | --- |
+| [Quadro](https://usequadro.com) | Multi-tenant SaaS for padel tournaments — payments, fixtures, CRM, WhatsApp, white-label |
+| [Minuto 90 Score](https://minuto90score.com) | Live sports results platform — ingestion pipelines, async workers, high-traffic SEO pages |
+| [SMA](https://smanalyzer.vercel.app) | Social listening & analytics for media, politics, and public figures |
 
-## Development
+## Find me
 
-```bash
-bun install
-bun run dev
-```
+- Portfolio — *(this repo)*
+- [GitHub](https://github.com/sebguevara)
+- [LinkedIn](https://www.linkedin.com/in/sebguevara/)
+- [X](https://x.com/_SebGuevara)
+- Email — [jseb.guevara@gmail.com](mailto:jseb.guevara@gmail.com)
 
-## Build
+---
 
-```bash
-bun run build   # astro check + astro build → dist/
-```
-
-## Docker
-
-```bash
-docker compose up --build
-# → http://localhost:8080
-```
+*Open to remote roles, interesting products, and collaborations. If you're building something ambitious, write me.*

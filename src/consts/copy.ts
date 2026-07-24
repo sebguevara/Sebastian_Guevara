@@ -16,6 +16,8 @@ type Copy = {
   };
   hero: {
     available: string;
+    role: string;
+    support: string;
     ctaContact: string;
     ctaProjects: string;
     downloadCv: string;
@@ -91,7 +93,9 @@ const copyByLocale: Record<Locale, Copy> = {
     },
     hero: {
       available: "Available for work",
-      ctaContact: "Get in touch",
+      role: "Full Stack Developer",
+      support: "5+ years building production systems",
+      ctaContact: "Get in Touch",
       ctaProjects: "View projects",
       downloadCv: "Download CV",
     },
@@ -149,9 +153,9 @@ const copyByLocale: Record<Locale, Copy> = {
   },
   es: {
     meta: {
-      title: "Sebastian Guevara — Desarrollador Full Stack",
+      title: "Sebastian Guevara — Full Stack Developer",
       description:
-        "Desarrollador Full Stack con 5+ años construyendo sistemas en producción. Team Lead en la Municipalidad de Corrientes y cofundador de dos productos SaaS. TypeScript, Node.js, PostgreSQL, Redis e IA aplicada.",
+        "Full Stack Developer con 5+ años construyendo sistemas en producción. Team Lead en la Municipalidad de Corrientes y cofundador de dos productos SaaS. TypeScript, Node.js, PostgreSQL, Redis e IA aplicada.",
       notFoundTitle: "Página no encontrada",
     },
     nav: {
@@ -164,6 +168,8 @@ const copyByLocale: Record<Locale, Copy> = {
     },
     hero: {
       available: "Disponible para trabajar",
+      role: "Full Stack Developer",
+      support: "5+ años construyendo sistemas en producción",
       ctaContact: "Contactame",
       ctaProjects: "Ver proyectos",
       downloadCv: "Descargar CV",

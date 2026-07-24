@@ -12,8 +12,9 @@
     opacity: 0.09;
   }
 
-  /* On light the dark grain reads as dirt — keep it barely-there. */
+  /* Same sandy weight as dark: multiply so the grain settles into the cream. */
   :root[data-theme="light"] div::before {
-    opacity: 0.04;
+    opacity: 0.11;
+    mix-blend-mode: multiply;
   }
 </style>

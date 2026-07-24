@@ -1,7 +1,7 @@
 import type { ImageMetadata } from "astro";
 
 const images = import.meta.glob<{ default: ImageMetadata }>(
-  ["/src/assets/projects/*.{webp,png}", "/src/assets/things/*.{webp,png}"],
+  "/src/assets/projects/*.{webp,png}",
 );
 
 const FALLBACK = "/src/assets/projects/dayflow.webp";

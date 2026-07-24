@@ -2,20 +2,20 @@
   "basics": {
     "name": "Sebastian Guevara",
     "label": {
-      "en": "Full Stack Developer | 5+ years building production systems | SaaS Co-founder",
-      "es": "Desarrollador Full Stack | 5+ años construyendo sistemas en producción | Cofundador SaaS"
+      "en": "Full Stack Developer | 5+ years building production systems",
+      "es": "Full Stack Developer | 5+ años construyendo sistemas en producción"
     },
     "tagline": {
-      "en": "I build web and mobile products end to end: APIs, real-time systems, data pipelines, and the infrastructure they run on. Currently leading development at the city government of Corrientes and running two SaaS products in production.",
-      "es": "Construyo productos web y mobile de punta a punta: APIs, sistemas en tiempo real, pipelines de datos y la infraestructura sobre la que corren. Actualmente lidero desarrollo en la Municipalidad de Corrientes y tengo dos SaaS propios corriendo en producción."
+      "en": "Full Stack Developer with 5+ years of experience building production web applications, APIs, and backend services. Core stack: Next.js, React, Node.js, Express.js, TypeScript, PostgreSQL, and Redis. Experienced with REST/GraphQL APIs, external integrations, asynchronous processing, data ingestion, testing, and deployments with Linux, Docker, and cloud platforms. I work autonomously end to end and use Claude Code, Codex, and MCPs to accelerate development, documentation, debugging, and testing while validating results.",
+      "es": "Full Stack Developer con más de 5 años de experiencia construyendo aplicaciones web en producción, APIs y servicios backend. Stack principal: Next.js, React, Node.js, Express.js, TypeScript, PostgreSQL y Redis. Experiencia con APIs REST/GraphQL, integraciones externas, procesamiento asíncrono, ingesta de datos, testing y despliegues con Linux, Docker y plataformas cloud. Trabajo de forma autónoma de punta a punta y uso Claude Code, Codex y MCPs para acelerar desarrollo, documentación, debugging y testing, validando cada resultado."
     },
-    "image": "/src/assets/things/me.webp",
+    "image": "/src/assets/profile/me.webp",
     "email": "jseb.guevara@gmail.com",
     "phone": "+54 379-4619729",
     "url": null,
     "summary": {
-      "en": "Full Stack Developer with 5+ years of experience building production web systems, backend services, API integrations, and automation workflows with TypeScript, React, Next.js, Node.js, and Python. Experienced with PostgreSQL, Redis, asynchronous processing, data ingestion, and end-to-end deployments on Linux, Docker, AWS, and Google Cloud Platform. I take ownership from ambiguous requirements through implementation, testing, documentation, and production delivery, and I use Claude Code, Codex, and MCP as part of an agentic development workflow — validating every result before it ships.",
-      "es": "Desarrollador Full Stack con más de 5 años de experiencia construyendo sistemas web en producción, servicios backend, integraciones de APIs y flujos de automatización con TypeScript, React, Next.js, Node.js y Python. Experiencia con PostgreSQL, Redis, procesamiento asíncrono, ingesta de datos y despliegues de punta a punta en Linux, Docker, AWS y Google Cloud Platform. Me hago cargo del problema completo, desde requerimientos ambiguos hasta la implementación, las pruebas, la documentación y la entrega en producción, y uso Claude Code, Codex y MCP como parte de un flujo de desarrollo agéntico, validando cada resultado antes de que llegue a producción."
+      "en": "Full Stack Developer with 5+ years of experience building production web applications, APIs, and backend services. Core stack: Next.js, React, Node.js, Express.js, TypeScript, PostgreSQL, and Redis. Experienced with REST/GraphQL APIs, external integrations, asynchronous processing, data ingestion, testing, and deployments with Linux, Docker, and cloud platforms. I work autonomously end to end and use Claude Code, Codex, and MCPs to accelerate development, documentation, debugging, and testing while validating results.",
+      "es": "Full Stack Developer con más de 5 años de experiencia construyendo aplicaciones web en producción, APIs y servicios backend. Stack principal: Next.js, React, Node.js, Express.js, TypeScript, PostgreSQL y Redis. Experiencia con APIs REST/GraphQL, integraciones externas, procesamiento asíncrono, ingesta de datos, testing y despliegues con Linux, Docker y plataformas cloud. Trabajo de forma autónoma de punta a punta y uso Claude Code, Codex y MCPs para acelerar desarrollo, documentación, debugging y testing, validando cada resultado."
     },
     "about": [
       {
@@ -55,8 +55,8 @@
       },
       {
         "network": "GitHub",
-        "username": "Seba74",
-        "url": "https://github.com/Seba74"
+        "username": "sebguevara",
+        "url": "https://github.com/sebguevara"
       },
       {
         "network": "Instagram",
@@ -270,42 +270,105 @@
     {
       "name": "Frontend",
       "level": "advanced",
-      "keywords": ["React", "Next.js", "TypeScript", "Svelte/SvelteKit", "Vue", "Angular", "React Native", "Tailwind CSS", "Zustand"]
+      "keywords": [
+        "React",
+        "Next.js",
+        "TypeScript",
+        "Svelte/SvelteKit",
+        "Vue",
+        "Angular",
+        "React Native",
+        "Tailwind CSS",
+        "Zustand"
+      ]
     },
     {
       "name": "Node.js & APIs",
       "level": "advanced",
-      "keywords": ["Express.js", "NestJS", "Bun", "Elysia", "REST APIs", "GraphQL", "WebSockets", "Webhooks", "External API integrations"]
+      "keywords": [
+        "Express.js",
+        "NestJS",
+        "Bun",
+        "Elysia",
+        "REST APIs",
+        "GraphQL",
+        "WebSockets",
+        "Webhooks",
+        "External API integrations"
+      ]
     },
     {
       "name": "Python",
       "level": "advanced",
-      "keywords": ["Backend modules", "Data processing", "H5/HDF5", "Automation", "Satellite data pipelines"]
+      "keywords": [
+        "Backend modules",
+        "Data processing",
+        "H5/HDF5",
+        "Automation",
+        "Satellite data pipelines"
+      ]
     },
     {
       "name": ".NET & PHP",
       "level": "advanced",
-      "keywords": ["C#", "ASP.NET", "Web API", "PHP", "Enterprise systems"]
+      "keywords": [
+        "C#",
+        "ASP.NET",
+        "Web API",
+        "PHP",
+        "Enterprise systems"
+      ]
     },
     {
       "name": "SQL Databases",
       "level": "advanced",
-      "keywords": ["PostgreSQL", "SQL Server", "MySQL", "Prisma", "Query optimization"]
+      "keywords": [
+        "PostgreSQL",
+        "SQL Server",
+        "MySQL",
+        "Prisma",
+        "Query optimization"
+      ]
     },
     {
       "name": "NoSQL, Caching & Queues",
       "level": "advanced",
-      "keywords": ["Redis", "MongoDB", "BullMQ (Redis-based queues)", "Vector databases", "Asynchronous processing"]
+      "keywords": [
+        "Redis",
+        "MongoDB",
+        "BullMQ (Redis-based queues)",
+        "Vector databases",
+        "Asynchronous processing"
+      ]
     },
     {
       "name": "AI & Agentic Tooling",
       "level": "advanced",
-      "keywords": ["Claude Code", "Codex", "MCP", "LLM APIs", "RAG", "Embeddings", "Semantic search", "Prompt engineering", "Structured outputs"]
+      "keywords": [
+        "Claude Code",
+        "Codex",
+        "MCP",
+        "LLM APIs",
+        "RAG",
+        "Embeddings",
+        "Semantic search",
+        "Prompt engineering",
+        "Structured outputs"
+      ]
     },
     {
       "name": "Infrastructure & Delivery",
       "level": "advanced",
-      "keywords": ["Docker", "AWS", "Google Cloud Platform", "Linux", "Self-managed VPS", "GitHub Actions", "Git", "CI/CD"]
+      "keywords": [
+        "Docker",
+        "AWS",
+        "Google Cloud Platform",
+        "Linux",
+        "Self-managed VPS",
+        "GitHub Actions",
+        "Git",
+        "CI/CD"
+      ]
     }
   ],
   "languages": [
@@ -336,74 +399,41 @@
         "en": "Applied AI",
         "es": "IA aplicada"
       },
-      "keywords": ["RAG", "Embeddings", "Semantic search", "Agentic workflows", "LLM integrations"]
+      "keywords": [
+        "RAG",
+        "Embeddings",
+        "Semantic search",
+        "Agentic workflows",
+        "LLM integrations"
+      ]
     },
     {
       "name": {
         "en": "Real-time Systems",
         "es": "Sistemas en tiempo real"
       },
-      "keywords": ["Live data feeds", "WebSockets", "Async workers", "High-traffic platforms"]
+      "keywords": [
+        "Live data feeds",
+        "WebSockets",
+        "Async workers",
+        "High-traffic platforms"
+      ]
     },
     {
       "name": {
         "en": "DevOps",
         "es": "DevOps"
       },
-      "keywords": ["CI/CD", "GitHub Actions", "Docker", "Linux", "Self-hosting"]
+      "keywords": [
+        "CI/CD",
+        "GitHub Actions",
+        "Docker",
+        "Linux",
+        "Self-hosting"
+      ]
     }
   ],
   "projects": [
-    {
-      "name": "SMA - Social Media Analyzer",
-      "slug": "sm-analyzer",
-      "isActive": true,
-      "featured": true,
-      "category": {
-        "en": "Freelance",
-        "es": "Freelance"
-      },
-      "startDate": "2024-03",
-      "endDate": null,
-      "image": "/src/assets/things/sma-1.png",
-      "images": [
-        "/src/assets/things/sma-1.png",
-        "/src/assets/things/sma-2.png"
-      ],
-      "details": [
-        {
-          "en": "Every day the pipeline pulls posts and reels from each tracked account, normalizes the data across the three networks, and stores the full history — that historical depth is what makes trend analysis possible, instead of only seeing a snapshot of today.",
-          "es": "Cada día el pipeline extrae los posts y reels de cada cuenta monitoreada, normaliza los datos entre las tres redes y guarda el historial completo — esa profundidad histórica es lo que hace posible el análisis de tendencias, en lugar de ver solo una foto del presente."
-        },
-        {
-          "en": "On top of that history sits the intelligence layer: topic classification runs automatically over every post, word clouds surface what each audience is talking about, and the comparison view puts two accounts side by side with an AI-written analysis of how they differ. Reports go out daily without anyone having to build them.",
-          "es": "Sobre ese historial corre la capa de inteligencia: la clasificación por tópicos se aplica automáticamente a cada post, los word clouds muestran de qué habla cada audiencia, y la vista de comparación pone dos cuentas lado a lado con un análisis escrito por IA sobre sus diferencias. Los informes salen a diario sin que nadie tenga que armarlos."
-        },
-        {
-          "en": "Access is multi-user with roles, and an admin panel controls which accounts are tracked. Next.js + TypeScript handle the product surface; Python does the heavy lifting of ingestion and processing.",
-          "es": "El acceso es multi-usuario con roles, y un panel de administración controla qué cuentas se monitorean. Next.js + TypeScript llevan la cara del producto; Python hace el trabajo pesado de ingesta y procesamiento."
-        }
-      ],
-      "description": {
-        "en": "Social media intelligence platform I built as a freelance project, running in production since March 2024. It monitors 50+ Instagram, Facebook, and TikTok accounts (media outlets, politicians, and public figures), ingests their posts and reels daily, and turns them into actionable analytics: engagement rates, likes and comments tracking, automatic topic classification, word clouds, side-by-side account comparisons with AI-generated analysis, comment ranking, and daily reports. Includes multi-user access with roles and an admin panel for managing tracked accounts.",
-        "es": "Plataforma de inteligencia de redes sociales que construí como proyecto freelance, en producción desde marzo de 2024. Monitorea más de 50 cuentas de Instagram, Facebook y TikTok (medios, políticos y figuras públicas), ingiere sus posts y reels a diario y los convierte en analítica accionable: tasas de engagement, seguimiento de likes y comentarios, clasificación automática por tópicos, word clouds, comparaciones entre cuentas con análisis generado por IA, ranking de comentadores e informes diarios. Incluye acceso multi-usuario con roles y un panel de administración de cuentas monitoreadas."
-      },
-      "highlights": [
-        "SocialListening",
-        "DataIngestion",
-        "EngagementAnalytics",
-        "TopicClassification",
-        "AIAnalysis",
-        "MultiUser"
-      ],
-      "technologies": [
-        "Next.js",
-        "TypeScript",
-        "Python"
-      ],
-      "url": "https://smanalyzer.vercel.app",
-      "github": null
-    },
     {
       "name": "Quadro",
       "slug": "quadro",
@@ -415,11 +445,11 @@
       },
       "startDate": "2026-05",
       "endDate": null,
-      "image": "/src/assets/things/qua-1.png",
+      "image": "/src/assets/projects/qua-1.webp",
       "images": [
-        "/src/assets/things/qua-1.png",
-        "/src/assets/things/qua-2.png",
-        "/src/assets/things/qua-3.png"
+        "/src/assets/projects/qua-1.webp",
+        "/src/assets/projects/qua-2.webp",
+        "/src/assets/projects/qua-3.webp"
       ],
       "details": [
         {
@@ -469,11 +499,11 @@
       },
       "startDate": "2025-10",
       "endDate": null,
-      "image": "/src/assets/things/min-1.png",
+      "image": "/src/assets/projects/min-1.webp",
       "images": [
-        "/src/assets/things/min-1.png",
-        "/src/assets/things/min-2.png",
-        "/src/assets/things/min-3.png"
+        "/src/assets/projects/min-1.webp",
+        "/src/assets/projects/min-2.webp",
+        "/src/assets/projects/min-3.webp"
       ],
       "details": [
         {
@@ -508,6 +538,56 @@
         "Redis"
       ],
       "url": "https://minuto90score.com",
+      "github": null
+    },
+    {
+      "name": "SMA - Social Media Analyzer",
+      "slug": "sm-analyzer",
+      "isActive": true,
+      "featured": true,
+      "category": {
+        "en": "Freelance",
+        "es": "Freelance"
+      },
+      "startDate": "2024-03",
+      "endDate": null,
+      "image": "/src/assets/projects/sma-1.webp",
+      "images": [
+        "/src/assets/projects/sma-1.webp",
+        "/src/assets/projects/sma-2.webp"
+      ],
+      "details": [
+        {
+          "en": "Every day the pipeline pulls posts and reels from each tracked account, normalizes the data across the three networks, and stores the full history — that historical depth is what makes trend analysis possible, instead of only seeing a snapshot of today.",
+          "es": "Cada día el pipeline extrae los posts y reels de cada cuenta monitoreada, normaliza los datos entre las tres redes y guarda el historial completo — esa profundidad histórica es lo que hace posible el análisis de tendencias, en lugar de ver solo una foto del presente."
+        },
+        {
+          "en": "On top of that history sits the intelligence layer: topic classification runs automatically over every post, word clouds surface what each audience is talking about, and the comparison view puts two accounts side by side with an AI-written analysis of how they differ. Reports go out daily without anyone having to build them.",
+          "es": "Sobre ese historial corre la capa de inteligencia: la clasificación por tópicos se aplica automáticamente a cada post, los word clouds muestran de qué habla cada audiencia, y la vista de comparación pone dos cuentas lado a lado con un análisis escrito por IA sobre sus diferencias. Los informes salen a diario sin que nadie tenga que armarlos."
+        },
+        {
+          "en": "Access is multi-user with roles, and an admin panel controls which accounts are tracked. Next.js + TypeScript handle the product surface; Python does the heavy lifting of ingestion and processing.",
+          "es": "El acceso es multi-usuario con roles, y un panel de administración controla qué cuentas se monitorean. Next.js + TypeScript llevan la cara del producto; Python hace el trabajo pesado de ingesta y procesamiento."
+        }
+      ],
+      "description": {
+        "en": "Social media intelligence platform I built as a freelance project, running in production since March 2024. It monitors 50+ Instagram, Facebook, and TikTok accounts (media outlets, politicians, and public figures), ingests their posts and reels daily, and turns them into actionable analytics: engagement rates, likes and comments tracking, automatic topic classification, word clouds, side-by-side account comparisons with AI-generated analysis, comment ranking, and daily reports. Includes multi-user access with roles and an admin panel for managing tracked accounts.",
+        "es": "Plataforma de inteligencia de redes sociales que construí como proyecto freelance, en producción desde marzo de 2024. Monitorea más de 50 cuentas de Instagram, Facebook y TikTok (medios, políticos y figuras públicas), ingiere sus posts y reels a diario y los convierte en analítica accionable: tasas de engagement, seguimiento de likes y comentarios, clasificación automática por tópicos, word clouds, comparaciones entre cuentas con análisis generado por IA, ranking de comentadores e informes diarios. Incluye acceso multi-usuario con roles y un panel de administración de cuentas monitoreadas."
+      },
+      "highlights": [
+        "SocialListening",
+        "DataIngestion",
+        "EngagementAnalytics",
+        "TopicClassification",
+        "AIAnalysis",
+        "MultiUser"
+      ],
+      "technologies": [
+        "Next.js",
+        "TypeScript",
+        "Python"
+      ],
+      "url": "https://smanalyzer.vercel.app",
       "github": null
     },
     {

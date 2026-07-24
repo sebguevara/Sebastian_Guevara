@@ -1,5 +1,4 @@
 import gsap from "gsap";
-import { motion } from "@/lib/animations/config";
 
 export function animateHero(root: ParentNode = document) {
   const hero = root.querySelector<HTMLElement>('[data-animate="hero"]');
@@ -10,13 +9,13 @@ export function animateHero(root: ParentNode = document) {
 
   gsap.fromTo(
     items,
-    { opacity: 0, y: motion.heroY },
+    { opacity: 0, y: 18 },
     {
       opacity: 1,
       y: 0,
-      duration: motion.heroDuration,
-      stagger: motion.heroStagger,
-      ease: motion.ease,
+      duration: 1.15,
+      stagger: 0.12,
+      ease: "power2.out",
       overwrite: "auto",
     },
   );

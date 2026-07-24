@@ -17,7 +17,7 @@ export type SocialItem = {
 };
 
 const navBase = [
-  { key: "home", label: "home", hash: "#home", icon: "Logo" },
+  { key: "home", label: "home", hash: "#home", icon: "Home" },
   { key: "experience", label: "experience", hash: "#experience", icon: "Briefcase" },
   { key: "projects", label: "projects", hash: "#projects", icon: "FileCode" },
   { key: "education", label: "education", hash: "#education", icon: "School" },

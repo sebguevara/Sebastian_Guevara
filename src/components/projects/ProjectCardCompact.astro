@@ -7,7 +7,7 @@ import type { ProjectItem } from "@/lib/cv";
 
 type Props = ProjectItem;
 
-const { slug, name, description, isActive, url, github, technologies } =
+const { slug, name, description, url, github, technologies } =
   Astro.props;
 const locale = getLocale(Astro.currentLocale);
 const copy = getCopy(locale);
@@ -30,15 +30,6 @@ const detailUrl = localizePath(`/projects/${slug}`, locale);
       </a>
     </h4>
     <div class="flex shrink-0 items-center gap-2.5 pt-1">
-      {
-        isActive && (
-          <span
-            class="size-1.5 rounded-full bg-accent"
-            title={copy.projects.live}
-            aria-label={copy.projects.live}
-          />
-        )
-      }
       {
         github && (
           <a
